@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+          http://www.liquibase.org/xml/ns/dbchangelog
+          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2025-05-25" author="Izabela Soares">
+        <sqlFile path="../sql/2025-05-25/create_table_usuario.sql"
+                 relativeToChangelogFile="true"/>
+        <sqlFile path="../sql/2025-05-25/create_table_endereco.sql"
+                 relativeToChangelogFile="true"/>
+        <sqlFile path="../sql/2025-05-25/create_table_termo_consentimento_identidade.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>
