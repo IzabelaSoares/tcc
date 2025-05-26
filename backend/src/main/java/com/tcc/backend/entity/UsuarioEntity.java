@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -35,12 +37,11 @@ public class UsuarioEntity {
 
     private LocalDateTime atualizadoEm;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private EnderecoEntity endereco;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EnderecoEntity> enderecos = new ArrayList<>();
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private TermoConsentimentoIdentidadeEntity termoConsentimentoIdentidade;
-
 
 }
 

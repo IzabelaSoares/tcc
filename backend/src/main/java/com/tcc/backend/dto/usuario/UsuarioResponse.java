@@ -1,6 +1,5 @@
 package com.tcc.backend.dto.usuario;
 
-import com.tcc.backend.dto.endereco.EnderecoResponse;
 import com.tcc.backend.entity.UsuarioEntity;
 
 import java.time.LocalDate;
@@ -11,9 +10,7 @@ public record UsuarioResponse(
         String nome,
         String email,
         String cpf,
-        LocalDate dataNascimento,
-        EnderecoResponse endereco,
-        boolean aceitouTermo
+        LocalDate dataNascimento
 ) {
     public static UsuarioResponse of(UsuarioEntity usuario) {
         return new UsuarioResponse(
@@ -21,13 +18,8 @@ public record UsuarioResponse(
                 usuario.getNome(),
                 usuario.getEmail(),
                 usuario.getCpf(),
-                usuario.getDataNascimento(),
-                EnderecoResponse.of(usuario.getEndereco()),
-                verificaSeAceitouTermo(usuario)
+                usuario.getDataNascimento()
         );
     }
 
-    private static boolean verificaSeAceitouTermo(UsuarioEntity usuario) {
-        return usuario.getTermoConsentimentoIdentidade() != null;
-    }
 }

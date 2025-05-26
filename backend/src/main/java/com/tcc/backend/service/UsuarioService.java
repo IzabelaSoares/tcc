@@ -1,11 +1,11 @@
 package com.tcc.backend.service;
 
-import com.tcc.backend.dto.usuario.UsuarioRequest;
+import com.tcc.backend.dto.usuario.UsuarioCreateRequest;
 import com.tcc.backend.dto.usuario.UsuarioResponse;
-import com.tcc.backend.entity.EnderecoEntity;
 import com.tcc.backend.entity.UsuarioEntity;
 import com.tcc.backend.exception.EmailJaCadastradoException;
 import com.tcc.backend.exception.TermoNaoAceitoException;
+import com.tcc.backend.exception.UsuarioNaoEncontradoException;
 import com.tcc.backend.repository.UsuarioRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,23 +17,26 @@ import org.springframework.stereotype.Service;
 public class UsuarioService {
 
     private final UsuarioRepository repository;
-    private final EnderecoService enderecoService;
     private final TermoService termoService;
     private final PasswordEncoder passwordEncoder;
 
-    public UsuarioResponse cadastrar(UsuarioRequest request, HttpServletRequest httpRequest) {
-        validarCadastro(request);
+    public UsuarioResponse buscarUsuario(String email) {
+        return repository.findByEmail(email)
+                .map(UsuarioResponse::of)
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(email));
+    }
 
-        EnderecoEntity enderecoEntity = enderecoService.cadastrar(request.endereco());
+    public UsuarioResponse cadastrar(UsuarioCreateRequest request, HttpServletRequest httpRequest) {
+        validarCadastro(request);
         String senha = passwordEncoder.encode(request.senha());
-        UsuarioEntity usuario = UsuarioRequest.of(request, senha, enderecoEntity);
+        UsuarioEntity usuario = UsuarioCreateRequest.of(request, senha);
         usuario = repository.save(usuario);
         termoService.registrarTermoAssinado(usuario, httpRequest.getRemoteAddr());
 
         return UsuarioResponse.of(usuario);
     }
 
-    private void validarCadastro(UsuarioRequest request) {
+    private void validarCadastro(UsuarioCreateRequest request) {
         if (repository.existsByEmail(request.email())) {
             throw new EmailJaCadastradoException(request.email());
         }
