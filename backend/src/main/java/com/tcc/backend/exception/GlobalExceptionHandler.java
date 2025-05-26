@@ -15,6 +15,7 @@ public class GlobalExceptionHandler {
             TermoNaoAceitoException.class,
             UsuarioNaoEncontradoException.class
     })
+
     public ResponseEntity<ErroResponse> handleCustomExceptions(RuntimeException ex) {
         return switch (ex) {
             case EmailJaCadastradoException e -> buildResponse(e, ErroCode.EMAIL_JA_CADASTRADO, HttpStatus.CONFLICT);
