@@ -2,7 +2,7 @@ package com.tcc.backend.dto.endereco;
 
 import com.tcc.backend.entity.EnderecoEntity;
 
-public record EnderecoRequest(
+public record EnderecoCreateRequest(
         String cep,
         String rua,
         String numero,
@@ -11,7 +11,7 @@ public record EnderecoRequest(
         String cidade,
         String estado
 ) {
-    public static EnderecoEntity of(EnderecoRequest request) {
+    public static EnderecoEntity of(EnderecoCreateRequest request) {
         EnderecoEntity enderecoEntity = new EnderecoEntity();
         enderecoEntity.setCep(request.cep());
         enderecoEntity.setRua(request.rua());
