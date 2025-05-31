@@ -58,7 +58,7 @@
   "message": "ID do usuário deve ser um UUID válido"
 }
 ```
-
+ea
 ### Exemplo cURL
 ```bash
 curl -X POST 'http://localhost:8080/endereco' \

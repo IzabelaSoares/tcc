@@ -7,6 +7,7 @@ import com.tcc.backend.web.endereco.EnderecoCreateRequest;
 import com.tcc.backend.web.endereco.EnderecoResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,6 @@ public class EnderecoController {
             @EnderecoCreateRequestSchema
             @RequestBody @Valid EnderecoCreateRequest request
     ) {
-        return ResponseEntity.ok(enderecoService.cadastrar(request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(enderecoService.cadastrar(request));
     }
 }
