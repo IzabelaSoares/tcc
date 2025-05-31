@@ -1,6 +1,7 @@
 package com.tcc.backend.config;
 
 import com.tcc.backend.entity.UsuarioEntity;
+import com.tcc.backend.exception.CredenciaisInvalidasException;
 import com.tcc.backend.repository.UsuarioRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,7 +22,7 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UsuarioEntity usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + email));
+                .orElseThrow(() -> new CredenciaisInvalidasException("Usuário não encontrado: " + email));
 
         return new org.springframework.security.core.userdetails.User(
                 usuario.getEmail(),
