@@ -1,8 +1,10 @@
 package com.tcc.backend.controller;
 
-import com.tcc.backend.dto.endereco.EnderecoCreateRequest;
-import com.tcc.backend.dto.endereco.EnderecoResponse;
+import com.tcc.backend.annotation.endereco.EnderecoCadastroDocumentation;
+import com.tcc.backend.annotation.endereco.EnderecoCreateRequestSchema;
 import com.tcc.backend.service.EnderecoService;
+import com.tcc.backend.web.endereco.EnderecoCreateRequest;
+import com.tcc.backend.web.endereco.EnderecoResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +25,10 @@ public class EnderecoController {
         return ResponseEntity.ok(enderecoService.listarEnderecos(usuarioId));
     }
 
+    @EnderecoCadastroDocumentation
     @PostMapping
     public ResponseEntity<EnderecoResponse> cadastrar(
+            @EnderecoCreateRequestSchema
             @RequestBody @Valid EnderecoCreateRequest request
     ) {
         return ResponseEntity.ok(enderecoService.cadastrar(request));

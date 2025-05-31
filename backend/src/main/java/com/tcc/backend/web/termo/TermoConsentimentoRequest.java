@@ -1,4 +1,4 @@
-package com.tcc.backend.dto.termo;
+package com.tcc.backend.web.termo;
 
 import com.tcc.backend.entity.TermoConsentimentoIdentidadeEntity;
 import com.tcc.backend.entity.UsuarioEntity;

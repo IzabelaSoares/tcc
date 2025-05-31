@@ -1,4 +1,4 @@
-package com.tcc.backend.dto.endereco;
+package com.tcc.backend.web.endereco;
 
 import com.tcc.backend.entity.EnderecoEntity;
 

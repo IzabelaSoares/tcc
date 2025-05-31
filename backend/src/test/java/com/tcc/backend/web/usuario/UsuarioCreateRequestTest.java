@@ -1,4 +1,4 @@
-package com.tcc.backend.dto.usuario;
+package com.tcc.backend.web.usuario;
 
 import jakarta.validation.ConstraintViolation;
 import org.junit.jupiter.api.Test;

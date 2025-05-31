@@ -1,7 +1,7 @@
 package com.tcc.backend.service;
 
-import com.tcc.backend.dto.usuario.UsuarioCreateRequest;
-import com.tcc.backend.dto.usuario.UsuarioResponse;
+import com.tcc.backend.web.usuario.UsuarioCreateRequest;
+import com.tcc.backend.web.usuario.UsuarioResponse;
 import com.tcc.backend.entity.UsuarioEntity;
 import com.tcc.backend.exception.EmailJaCadastradoException;
 import com.tcc.backend.exception.TermoNaoAceitoException;
@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +46,10 @@ public class UsuarioService {
         if (!request.aceitouTermo()) {
             throw new TermoNaoAceitoException();
         }
+    }
+
+    public boolean validarUsuarioExiste(UUID idUsuario) {
+        return repository.existsById(idUsuario);
     }
 }
 

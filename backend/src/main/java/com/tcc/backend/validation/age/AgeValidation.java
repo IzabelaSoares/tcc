@@ -1,4 +1,4 @@
-package com.tcc.backend.validation;
+package com.tcc.backend.validation.age;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = AgeValidator.class)
-public @interface CustomValidation {
+public @interface AgeValidation {
     String message() default "Idade inválida";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

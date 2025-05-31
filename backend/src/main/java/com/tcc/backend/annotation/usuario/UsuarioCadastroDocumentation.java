@@ -1,6 +1,6 @@
 package com.tcc.backend.annotation.usuario;
 
-import com.tcc.backend.dto.usuario.UsuarioResponse;
+import com.tcc.backend.web.usuario.UsuarioResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

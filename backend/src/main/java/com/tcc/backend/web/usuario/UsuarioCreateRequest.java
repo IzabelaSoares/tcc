@@ -1,7 +1,7 @@
-package com.tcc.backend.dto.usuario;
+package com.tcc.backend.web.usuario;
 
 import com.tcc.backend.entity.UsuarioEntity;
-import com.tcc.backend.validation.CustomValidation;
+import com.tcc.backend.validation.age.AgeValidation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CPF;
@@ -39,7 +39,7 @@ public record UsuarioCreateRequest(
         @Schema(example = "1990-01-01", requiredMode = Schema.RequiredMode.REQUIRED)
         @NotNull(message = "Data de nascimento é obrigatória")
         @Past(message = "Data de nascimento deve ser no passado")
-        @CustomValidation(minAge = 13)
+        @AgeValidation(minAge = 13)
         LocalDate dataNascimento,
 
         @Schema(example = "true", requiredMode = Schema.RequiredMode.REQUIRED)

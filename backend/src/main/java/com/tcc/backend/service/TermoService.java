@@ -1,6 +1,6 @@
 package com.tcc.backend.service;
 
-import com.tcc.backend.dto.termo.TermoConsentimentoRequest;
+import com.tcc.backend.web.termo.TermoConsentimentoRequest;
 import com.tcc.backend.entity.TermoConsentimentoIdentidadeEntity;
 import com.tcc.backend.entity.UsuarioEntity;
 import com.tcc.backend.repository.TermoConsentimentoIndentidadeRepository;

@@ -1,4 +1,4 @@
-package com.tcc.backend.dto.erro;
+package com.tcc.backend.web.erro;
 
 import com.tcc.backend.enumeration.ErroCode;
 

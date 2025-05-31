@@ -1,7 +1,7 @@
 package com.tcc.backend.controller;
 
-import com.tcc.backend.dto.usuario.UsuarioCreateRequest;
-import com.tcc.backend.dto.usuario.UsuarioResponse;
+import com.tcc.backend.web.usuario.UsuarioCreateRequest;
+import com.tcc.backend.web.usuario.UsuarioResponse;
 import com.tcc.backend.service.UsuarioService;
 import com.tcc.backend.annotation.usuario.UsuarioCadastroDocumentation;
 import com.tcc.backend.annotation.usuario.UsuarioCreateRequestSchema;

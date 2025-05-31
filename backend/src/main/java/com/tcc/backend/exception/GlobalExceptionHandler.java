@@ -1,6 +1,6 @@
 package com.tcc.backend.exception;
 
-import com.tcc.backend.dto.erro.ErroResponse;
+import com.tcc.backend.web.erro.ErroResponse;
 import com.tcc.backend.enumeration.ErroCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({
             EmailJaCadastradoException.class,
             TermoNaoAceitoException.class,
-            UsuarioNaoEncontradoException.class
+            UsuarioNaoEncontradoException.class,
+            EnderecoInvalidoException.class
     })
 
     public ResponseEntity<ErroResponse> handleCustomExceptions(RuntimeException ex) {
@@ -21,6 +22,7 @@ public class GlobalExceptionHandler {
             case EmailJaCadastradoException e -> buildResponse(e, ErroCode.EMAIL_JA_CADASTRADO, HttpStatus.CONFLICT);
             case TermoNaoAceitoException e -> buildResponse(e, ErroCode.TERMO_NAO_ACEITO, HttpStatus.FORBIDDEN);
             case UsuarioNaoEncontradoException e -> buildResponse(e, ErroCode.USUARIO_NAO_CADASTRADO, HttpStatus.NOT_FOUND);
+            case EnderecoInvalidoException e -> buildResponse(e, ErroCode.ENDERECO_INVALIDO, HttpStatus.BAD_REQUEST);
             default -> buildResponse(ex, ErroCode.ERRO_INTERNO, HttpStatus.INTERNAL_SERVER_ERROR);
         };
     }
