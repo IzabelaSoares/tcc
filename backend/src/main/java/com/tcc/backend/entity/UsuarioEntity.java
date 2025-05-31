@@ -19,6 +19,8 @@ import java.util.UUID;
 public class UsuarioEntity {
 
     @Id
+    @GeneratedValue(generator = "UUID")
+    @Column(columnDefinition = "uuid", updatable = false)
     private UUID id;
 
     private String nome;

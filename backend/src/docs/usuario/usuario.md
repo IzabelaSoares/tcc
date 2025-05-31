@@ -1,6 +1,6 @@
 ## Endpoint de Cadastro de Usuário
 
-`POST /usuarios`
+`POST /usuario`
 
 ### Request Body
 ```json
@@ -48,13 +48,13 @@
 
 ### Exemplo cURL
 ```bash
-curl -X POST 'http://localhost:8080/usuarios' \
+curl -X POST 'http://localhost:8080/usuario' \
 -H 'Content-Type: application/json' \
 -d '{
-    "nome": "Maria Oliveira",
-    "email": "maria@example.com",
+    "nome": "Izabela Soares",
+    "email": "izabela_soares@example.com",
     "senha": "Senha@123",
-    "cpf": "987.654.321-00",
+    "cpf": "873.905.520-50",
     "dataNascimento": "1985-05-15",
     "aceitouTermo": true
 }'

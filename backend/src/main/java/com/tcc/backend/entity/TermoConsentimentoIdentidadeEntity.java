@@ -15,7 +15,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "termo_consentimento_identidade")
 public class TermoConsentimentoIdentidadeEntity {
+
     @Id
+    @GeneratedValue(generator = "UUID")
+    @Column(columnDefinition = "uuid", updatable = false)
     private UUID id;
 
     private LocalDateTime aceitoEm;
