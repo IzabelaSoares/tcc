@@ -1,9 +1,9 @@
 package com.tcc.backend.service;
 
-import com.tcc.backend.config.JwtTokenProvider;
+import com.tcc.backend.config.jwt.JwtTokenProvider;
+import com.tcc.backend.entity.UsuarioEntity;
 import com.tcc.backend.web.auth.AuthRequest;
 import com.tcc.backend.web.auth.AuthResponse;
-import com.tcc.backend.web.usuario.UsuarioResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,8 +28,8 @@ public class AuthService {
        );
 
        UserDetails user = (UserDetails) authentication.getPrincipal();
-       UsuarioResponse usuario = usuarioService.buscarUsuario(user.getUsername());
+       UsuarioEntity usuario = usuarioService.buscarUsuario(user.getUsername());
        String token = jwtTokenProvider.generateToken(user.getUsername());
-       return AuthResponse.of(token, usuario);
+       return AuthResponse.of(token, usuario.getEmail(), usuario.getNome());
    }
 }

@@ -1,18 +1,16 @@
 package com.tcc.backend.service;
 
-import com.tcc.backend.web.usuario.UsuarioCreateRequest;
-import com.tcc.backend.web.usuario.UsuarioResponse;
 import com.tcc.backend.entity.UsuarioEntity;
 import com.tcc.backend.exception.EmailJaCadastradoException;
 import com.tcc.backend.exception.TermoNaoAceitoException;
 import com.tcc.backend.exception.UsuarioNaoEncontradoException;
 import com.tcc.backend.repository.UsuarioRepository;
+import com.tcc.backend.web.usuario.UsuarioCreateRequest;
+import com.tcc.backend.web.usuario.UsuarioResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -22,9 +20,8 @@ public class UsuarioService {
     private final TermoService termoService;
     private final PasswordEncoder passwordEncoder;
 
-    public UsuarioResponse buscarUsuario(String email) {
+    public UsuarioEntity buscarUsuario(String email) {
         return repository.findByEmail(email)
-                .map(UsuarioResponse::of)
                 .orElseThrow(() -> new UsuarioNaoEncontradoException(email));
     }
 
@@ -48,8 +45,5 @@ public class UsuarioService {
         }
     }
 
-    public boolean validarUsuarioExiste(UUID idUsuario) {
-        return repository.existsById(idUsuario);
-    }
 }
 

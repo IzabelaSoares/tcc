@@ -1,9 +1,10 @@
 package com.tcc.backend.web.endereco;
 
 import com.tcc.backend.entity.EnderecoEntity;
-import com.tcc.backend.validation.uuid.UUIDValidation;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
@@ -41,16 +42,9 @@ public record EnderecoCreateRequest(
         @Size(min = 2, max = 2, message = "Estado deve ser a sigla com 2 caracteres")
         @Pattern(regexp = "AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO",
                 message = "Estado deve ser uma sigla válida de UF brasileira")
-        String estado,
-
-        @Schema(example = "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                requiredMode = Schema.RequiredMode.REQUIRED,
-                description = "ID do usuário no formato UUID")
-        @NotBlank(message = "ID do usuário é obrigatório")
-        @UUIDValidation(message = "ID do usuário deve ser um UUID válido")
-        UUID usuarioId
+        String estado
 ) {
-    public static EnderecoEntity of(EnderecoCreateRequest request) {
+    public static EnderecoEntity of(EnderecoCreateRequest request, UUID idUsuario) {
         EnderecoEntity enderecoEntity = new EnderecoEntity();
         enderecoEntity.setCep(request.cep());
         enderecoEntity.setRua(request.rua());
@@ -59,6 +53,7 @@ public record EnderecoCreateRequest(
         enderecoEntity.setBairro(request.bairro());
         enderecoEntity.setCidade(request.cidade());
         enderecoEntity.setEstado(request.estado());
+        enderecoEntity.setUsuario(idUsuario);
         return enderecoEntity;
     }
 }

@@ -2,11 +2,16 @@ package com.tcc.backend.annotation.endereco;
 
 import com.tcc.backend.web.endereco.EnderecoResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.media.*;
 
-import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -41,18 +46,6 @@ import java.lang.annotation.*;
                 {
                     "code": "ENDERECO_INVALIDO",
                     "message": "CEP inválido ou estado não existe"
-                }""")
-                )
-        ),
-        @ApiResponse(
-                responseCode = "404",
-                description = "Usuário não encontrado",
-                content = @Content(
-                        mediaType = "application/json",
-                        examples = @ExampleObject(value = """
-                {
-                    "code": "USUARIO_NAO_ENCONTRADO",
-                    "message": "Usuário com ID 123 não encontrado"
                 }""")
                 )
         )

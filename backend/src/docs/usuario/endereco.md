@@ -63,6 +63,7 @@ ea
 ```bash
 curl -X POST 'http://localhost:8080/endereco' \
 -H 'Content-Type: application/json' \
+-H 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpemFiZWxhX3NvYXJlc0BleGFtcGxlLmNvbSIsImlhdCI6MTc0ODc1MTYzNCwiZXhwIjoxNzQ4ODM4MDM0fQ.4BmQTYDbSoSHjUI3W7jbALeZSW9EKrLnUV9PodZF4sk0w9rtvBf-eI3p_TnRoyxellW0XQSeYJfDx14mHXA8AQ' \
 -d '{
     "cep": "01311-000",
     "rua": "Avenida Paulista",

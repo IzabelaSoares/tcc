@@ -1,6 +1,7 @@
 package com.tcc.backend.annotation.endereco;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @Schema(
         name = "EnderecoCreateRequest",
@@ -13,8 +14,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
             "bairro": "Bela Vista",
             "cidade": "São Paulo",
             "estado": "SP",
-            "usuarioId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
         }""",
         description = "DTO para criação de novo endereço vinculado a um usuário"
 )
+@SecurityRequirement(name = "bearerAuth")
 public @interface EnderecoCreateRequestSchema {}

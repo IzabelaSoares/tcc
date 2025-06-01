@@ -1,5 +1,6 @@
-package com.tcc.backend.config;
+package com.tcc.backend.config.security;
 
+import com.tcc.backend.config.jwt.JwtTokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

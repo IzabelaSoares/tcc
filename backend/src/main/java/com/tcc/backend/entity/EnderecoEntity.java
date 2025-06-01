@@ -13,7 +13,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "endereco")
 public class EnderecoEntity {
+
     @Id
+    @GeneratedValue(generator = "UUID")
+    @Column(columnDefinition = "uuid", updatable = false)
     private UUID id;
 
     private String rua;
@@ -27,4 +30,9 @@ public class EnderecoEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuario;
+
+    public void setUsuario(UUID idUsuario) {
+        this.usuario = new UsuarioEntity();
+        this.usuario.setId(idUsuario);
+    }
 }

@@ -1,4 +1,4 @@
-package com.tcc.backend.config;
+package com.tcc.backend.config.jwt;
 
 import com.tcc.backend.exception.CredenciaisInvalidasException;
 import io.jsonwebtoken.Claims;
@@ -40,7 +40,7 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token) {
         try {
-            return isExpired(token);
+            return !isExpired(token);
         } catch (Exception ex) {
             throw new CredenciaisInvalidasException("Usuario não autorizado para estas credenciais");
         }
