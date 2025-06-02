@@ -15,7 +15,8 @@ public class GlobalExceptionHandler {
             TermoNaoAceitoException.class,
             UsuarioNaoEncontradoException.class,
             EnderecoInvalidoException.class,
-            CredenciaisInvalidasException.class
+            CredenciaisInvalidasException.class,
+            EnderecoNaoEncontradoException.class
     })
 
     public ResponseEntity<ErroResponse> handleCustomExceptions(RuntimeException ex) {
@@ -25,6 +26,7 @@ public class GlobalExceptionHandler {
             case UsuarioNaoEncontradoException e -> buildResponse(e, ErroCode.USUARIO_NAO_CADASTRADO, HttpStatus.NOT_FOUND);
             case EnderecoInvalidoException e -> buildResponse(e, ErroCode.ENDERECO_INVALIDO, HttpStatus.BAD_REQUEST);
             case CredenciaisInvalidasException e -> buildResponse(e, ErroCode.CREDENCIAIS_INVALIDAS, HttpStatus.UNAUTHORIZED);
+            case EnderecoNaoEncontradoException e -> buildResponse(e, ErroCode.ENDERECO_INVALIDO, HttpStatus.BAD_REQUEST);
             default -> buildResponse(ex, ErroCode.ERRO_INTERNO, HttpStatus.INTERNAL_SERVER_ERROR);
         };
     }

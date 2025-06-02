@@ -1,9 +1,6 @@
 package com.tcc.backend.controller;
 
-import com.tcc.backend.annotation.endereco.EnderecoCreateDocumentation;
-import com.tcc.backend.annotation.endereco.EnderecoCreateRequestSchema;
-import com.tcc.backend.annotation.endereco.EnderecoUpdateDocumentation;
-import com.tcc.backend.annotation.endereco.EnderecoUpdateRequestSchema;
+import com.tcc.backend.annotation.endereco.*;
 import com.tcc.backend.service.EnderecoService;
 import com.tcc.backend.web.endereco.EnderecoCreateRequest;
 import com.tcc.backend.web.endereco.EnderecoResponse;
@@ -16,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/endereco")
@@ -26,8 +24,16 @@ public class EnderecoController {
     private final EnderecoService enderecoService;
 
     @GetMapping
+    @EnderecoGetDocumentation
     public ResponseEntity<List<EnderecoResponse>> buscar() {
         return ResponseEntity.ok(enderecoService.buscar());
+    }
+
+    @DeleteMapping
+    @EnderecoDeleteDocumentation
+    public ResponseEntity<Void> remover(UUID id) {
+        enderecoService.remover(id);
+        return ResponseEntity.noContent().build();
     }
 
     @EnderecoCreateDocumentation

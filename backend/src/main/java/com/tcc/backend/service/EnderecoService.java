@@ -1,6 +1,7 @@
 package com.tcc.backend.service;
 
 import com.tcc.backend.entity.EnderecoEntity;
+import com.tcc.backend.exception.EnderecoNaoEncontradoException;
 import com.tcc.backend.repository.EnderecoRepository;
 import com.tcc.backend.web.endereco.EnderecoCreateRequest;
 import com.tcc.backend.web.endereco.EnderecoResponse;
@@ -17,7 +18,6 @@ public class EnderecoService {
 
     private final EnderecoRepository repository;
     private final UsuarioService usuarioService;
-
 
     public List<EnderecoResponse> buscar() {
         UUID idUsuarioLogado = usuarioService.buscarIdUsuarioLogado();
@@ -38,6 +38,14 @@ public class EnderecoService {
         return EnderecoResponse.of(endereco);
     }
 
+    public void remover(UUID id) {
+        EnderecoEntity endereco = buscarEnderecoPorId(id);
+        repository.delete(endereco);
+    }
 
+    private EnderecoEntity buscarEnderecoPorId(UUID id) {
+        return repository.findById(id)
+                .orElseThrow(EnderecoNaoEncontradoException::new);
+    }
 }
 
