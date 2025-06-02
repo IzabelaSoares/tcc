@@ -1,20 +1,20 @@
 package com.tcc.backend.controller;
 
+import com.tcc.backend.annotation.usuario.UsuarioUpdateDocumentation;
+import com.tcc.backend.annotation.usuario.UsuarioUpdateRequestSchema;
 import com.tcc.backend.web.usuario.UsuarioCreateRequest;
 import com.tcc.backend.web.usuario.UsuarioResponse;
 import com.tcc.backend.service.UsuarioService;
-import com.tcc.backend.annotation.usuario.UsuarioCadastroDocumentation;
+import com.tcc.backend.annotation.usuario.UsuarioCreateDocumentation;
 import com.tcc.backend.annotation.usuario.UsuarioCreateRequestSchema;
+import com.tcc.backend.web.usuario.UsuarioUpdateRequest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/usuario")
@@ -24,7 +24,7 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
-    @UsuarioCadastroDocumentation
+    @UsuarioCreateDocumentation
     @PostMapping
     public ResponseEntity<UsuarioResponse> cadastrar(
             @UsuarioCreateRequestSchema
@@ -33,5 +33,15 @@ public class UsuarioController {
     ) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(usuarioService.cadastrar(request, httpRequest));
+    }
+
+    @UsuarioUpdateDocumentation
+    @PutMapping
+    public ResponseEntity<UsuarioResponse> atualizar(
+            @UsuarioUpdateRequestSchema
+            @RequestBody @Valid UsuarioUpdateRequest request
+    ) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(usuarioService.atualizar(request));
     }
 }

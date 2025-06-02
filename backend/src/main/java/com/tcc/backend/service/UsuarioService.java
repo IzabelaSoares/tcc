@@ -8,6 +8,7 @@ import com.tcc.backend.exception.UsuarioNaoEncontradoException;
 import com.tcc.backend.repository.UsuarioRepository;
 import com.tcc.backend.web.usuario.UsuarioCreateRequest;
 import com.tcc.backend.web.usuario.UsuarioResponse;
+import com.tcc.backend.web.usuario.UsuarioUpdateRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,12 +26,16 @@ public class UsuarioService {
     private final SecurityUtils securityUtils;
 
     public UUID buscarIdUsuarioLogado() {
-        String userEmail = securityUtils.getCurrentUserEmail();
-        UsuarioEntity usuario = buscarUsuario(userEmail);
+        UsuarioEntity usuario = buscarUsuarioLogado();
         return usuario.getId();
     }
 
-    private UsuarioEntity buscarUsuario(String email) {
+    private UsuarioEntity buscarUsuarioLogado(){
+        String userEmail = securityUtils.getCurrentUserEmail();
+        return buscarUsuarioPorEmail(userEmail);
+    }
+
+    public UsuarioEntity buscarUsuarioPorEmail(String email) {
         return repository.findByEmail(email)
                 .orElseThrow(() -> new UsuarioNaoEncontradoException(email));
     }
@@ -41,6 +46,15 @@ public class UsuarioService {
         UsuarioEntity usuario = UsuarioCreateRequest.of(request, senha);
         usuario = repository.save(usuario);
         termoService.registrarTermoAssinado(usuario, httpRequest.getRemoteAddr());
+
+        return UsuarioResponse.of(usuario);
+    }
+
+    public UsuarioResponse atualizar(UsuarioUpdateRequest request) {
+        UsuarioEntity usuarioLogado = buscarUsuarioLogado();
+        String senha = passwordEncoder.encode(request.senha());
+        UsuarioEntity usuario = UsuarioUpdateRequest.of(request, senha, usuarioLogado);
+        usuario = repository.save(usuario);
 
         return UsuarioResponse.of(usuario);
     }

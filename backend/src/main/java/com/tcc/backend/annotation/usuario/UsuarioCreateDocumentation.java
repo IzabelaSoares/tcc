@@ -55,5 +55,5 @@ import java.lang.annotation.*;
                 )
         )
 })
-public @interface UsuarioCadastroDocumentation {
+public @interface UsuarioCreateDocumentation {
 }

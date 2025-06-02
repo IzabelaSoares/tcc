@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Immutable;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -43,6 +44,7 @@ public class UsuarioEntity {
     private List<EnderecoEntity> enderecos = new ArrayList<>();
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @Immutable
     private TermoConsentimentoIdentidadeEntity termoConsentimentoIdentidade;
 
 }

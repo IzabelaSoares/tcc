@@ -1,14 +1,13 @@
 package com.tcc.backend.controller;
 
-import com.tcc.backend.annotation.endereco.EnderecoUpdateDocumentation;
 import com.tcc.backend.annotation.endereco.EnderecoCreateDocumentation;
 import com.tcc.backend.annotation.endereco.EnderecoCreateRequestSchema;
+import com.tcc.backend.annotation.endereco.EnderecoUpdateDocumentation;
 import com.tcc.backend.annotation.endereco.EnderecoUpdateRequestSchema;
 import com.tcc.backend.service.EnderecoService;
 import com.tcc.backend.web.endereco.EnderecoCreateRequest;
 import com.tcc.backend.web.endereco.EnderecoResponse;
 import com.tcc.backend.web.endereco.EnderecoUpdateRequest;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/endereco")
 @RequiredArgsConstructor
-@SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Endereço")
 public class EnderecoController {
 
@@ -47,6 +45,6 @@ public class EnderecoController {
             @EnderecoUpdateRequestSchema
             @RequestBody @Valid EnderecoUpdateRequest request
     ) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(enderecoService.alterar(request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(enderecoService.atualizar(request));
     }
 }

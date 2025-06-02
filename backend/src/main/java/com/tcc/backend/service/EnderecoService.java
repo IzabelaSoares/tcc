@@ -32,7 +32,7 @@ public class EnderecoService {
         return EnderecoResponse.of(endereco);
     }
 
-    public EnderecoResponse alterar(EnderecoUpdateRequest request) {
+    public EnderecoResponse atualizar(EnderecoUpdateRequest request) {
         UUID idUsuarioLogado = usuarioService.buscarIdUsuarioLogado();
         EnderecoEntity endereco = repository.save(EnderecoUpdateRequest.of(request, idUsuarioLogado));
         return EnderecoResponse.of(endereco);

@@ -28,7 +28,7 @@ public class AuthService {
        );
 
        UserDetails user = (UserDetails) authentication.getPrincipal();
-       UsuarioEntity usuario = usuarioService.buscarUsuario(user.getUsername());
+       UsuarioEntity usuario = usuarioService.buscarUsuarioPorEmail(user.getUsername());
        String token = jwtTokenProvider.generateToken(user.getUsername());
        return AuthResponse.of(token, usuario.getEmail(), usuario.getNome());
    }
