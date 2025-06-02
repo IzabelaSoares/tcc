@@ -15,34 +15,20 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "Cadastrar novo usuário",
-        description = "Endpoint para criação de novos usuários no sistema")
+@Operation(summary = "Atualizar usuário existente",
+        description = "Endpoint para atualização dos dados do usuário no sistema")
 @ApiResponses({
         @ApiResponse(
-                responseCode = "201",
+                responseCode = "200",
                 description = "Usuário atualizado com sucesso",
                 content = @Content(
                         mediaType = "application/json",
                         schema = @Schema(implementation = UsuarioResponse.class),
                         examples = @ExampleObject(value = """
                                 {
-                                    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                                     "nome": "Izabela Soares",
-                                    "email": "izabela_soares@example.com",
-                                    "cpf": "123.456.789-00",
+                                    "senha": "Senha@123"
                                     "dataNascimento": "1990-01-01",
-                                }""")
-                )
-        ),
-        @ApiResponse(
-                responseCode = "409",
-                description = "E-mail já cadastrado",
-                content = @Content(
-                        mediaType = "application/json",
-                        examples = @ExampleObject(value = """
-                                {
-                                    "code": "EMAIL_JA_CADASTRADO",
-                                    "message": "O e-mail 'izabela_soares@example.com' já está cadastrado"
                                 }""")
                 )
         )

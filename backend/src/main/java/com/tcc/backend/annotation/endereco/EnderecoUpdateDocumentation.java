@@ -15,11 +15,11 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "Cadastrar novo endereço",
-        description = "Endpoint para criação de novos endereços no sistema")
+@Operation(summary = "Atualizar endereço existente",
+        description = "Endpoint para atualizar novos endereços do usuário no sistema")
 @ApiResponses({
         @ApiResponse(
-                responseCode = "201",
+                responseCode = "200",
                 description = "Endereço atualizado com sucesso",
                 content = @Content(
                         mediaType = "application/json",
