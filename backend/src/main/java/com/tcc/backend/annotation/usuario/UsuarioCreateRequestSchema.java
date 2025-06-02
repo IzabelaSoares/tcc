@@ -6,8 +6,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
         name = "UsuarioCreateRequest",
         example = """
     {
-        "nome": "João Silva",
-        "email": "joao@example.com",
+        "nome": "Izabela Soares",
+        "email": "izabela_soares@example.com",
         "senha": "Senha@123",
         "cpf": "123.456.789-00",
         "dataNascimento": "1990-01-01",

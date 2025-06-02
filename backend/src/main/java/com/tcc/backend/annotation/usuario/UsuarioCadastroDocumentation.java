@@ -22,8 +22,8 @@ import java.lang.annotation.*;
                         examples = @ExampleObject(value = """
                                 {
                                     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                                    "nome": "João Silva",
-                                    "email": "joao@example.com",
+                                    "nome": "Izabela Soares",
+                                    "email": "izabela_soares@example.com",
                                     "cpf": "123.456.789-00",
                                     "dataNascimento": "1990-01-01",
                                     "aceitouTermo": true
@@ -50,7 +50,7 @@ import java.lang.annotation.*;
                         examples = @ExampleObject(value = """
                                 {
                                     "code": "EMAIL_JA_CADASTRADO",
-                                    "message": "O e-mail 'joao@example.com' já está cadastrado"
+                                    "message": "O e-mail 'izabela_soares@example.com' já está cadastrado"
                                 }""")
                 )
         )

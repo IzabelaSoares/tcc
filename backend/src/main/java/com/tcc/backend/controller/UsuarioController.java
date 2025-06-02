@@ -5,6 +5,7 @@ import com.tcc.backend.web.usuario.UsuarioResponse;
 import com.tcc.backend.service.UsuarioService;
 import com.tcc.backend.annotation.usuario.UsuarioCadastroDocumentation;
 import com.tcc.backend.annotation.usuario.UsuarioCreateRequestSchema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/usuario")
 @RequiredArgsConstructor
+@Tag(name = "Usuario")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
