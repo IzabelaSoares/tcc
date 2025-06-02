@@ -1,10 +1,13 @@
 package com.tcc.backend.controller;
 
-import com.tcc.backend.annotation.endereco.EnderecoCadastroDocumentation;
+import com.tcc.backend.annotation.endereco.EnderecoUpdateDocumentation;
+import com.tcc.backend.annotation.endereco.EnderecoCreateDocumentation;
 import com.tcc.backend.annotation.endereco.EnderecoCreateRequestSchema;
+import com.tcc.backend.annotation.endereco.EnderecoUpdateRequestSchema;
 import com.tcc.backend.service.EnderecoService;
 import com.tcc.backend.web.endereco.EnderecoCreateRequest;
 import com.tcc.backend.web.endereco.EnderecoResponse;
+import com.tcc.backend.web.endereco.EnderecoUpdateRequest;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -14,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/endereco")
@@ -25,17 +27,26 @@ public class EnderecoController {
 
     private final EnderecoService enderecoService;
 
-    @GetMapping("/{usuarioId}/enderecos")
-    public ResponseEntity<List<EnderecoResponse>> listarEnderecos(@PathVariable UUID usuarioId) {
-        return ResponseEntity.ok(enderecoService.listarEnderecos(usuarioId));
+    @GetMapping
+    public ResponseEntity<List<EnderecoResponse>> buscar() {
+        return ResponseEntity.ok(enderecoService.buscar());
     }
 
-    @EnderecoCadastroDocumentation
+    @EnderecoCreateDocumentation
     @PostMapping
     public ResponseEntity<EnderecoResponse> cadastrar(
             @EnderecoCreateRequestSchema
             @RequestBody @Valid EnderecoCreateRequest request
     ) {
         return ResponseEntity.status(HttpStatus.CREATED).body(enderecoService.cadastrar(request));
+    }
+
+    @EnderecoUpdateDocumentation
+    @PutMapping
+    public ResponseEntity<EnderecoResponse> alterar(
+            @EnderecoUpdateRequestSchema
+            @RequestBody @Valid EnderecoUpdateRequest request
+    ) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(enderecoService.alterar(request));
     }
 }

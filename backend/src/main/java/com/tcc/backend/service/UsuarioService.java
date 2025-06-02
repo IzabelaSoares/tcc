@@ -1,5 +1,6 @@
 package com.tcc.backend.service;
 
+import com.tcc.backend.config.security.SecurityUtils;
 import com.tcc.backend.entity.UsuarioEntity;
 import com.tcc.backend.exception.EmailJaCadastradoException;
 import com.tcc.backend.exception.TermoNaoAceitoException;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
@@ -19,8 +22,15 @@ public class UsuarioService {
     private final UsuarioRepository repository;
     private final TermoService termoService;
     private final PasswordEncoder passwordEncoder;
+    private final SecurityUtils securityUtils;
 
-    public UsuarioEntity buscarUsuario(String email) {
+    public UUID buscarIdUsuarioLogado() {
+        String userEmail = securityUtils.getCurrentUserEmail();
+        UsuarioEntity usuario = buscarUsuario(userEmail);
+        return usuario.getId();
+    }
+
+    private UsuarioEntity buscarUsuario(String email) {
         return repository.findByEmail(email)
                 .orElseThrow(() -> new UsuarioNaoEncontradoException(email));
     }

@@ -50,5 +50,5 @@ import java.lang.annotation.Target;
                 )
         )
 })
-public @interface EnderecoCadastroDocumentation {
+public @interface EnderecoCreateDocumentation {
 }
