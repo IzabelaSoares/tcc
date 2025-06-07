@@ -51,6 +51,6 @@ public class EnderecoController {
             @EnderecoUpdateRequestSchema
             @RequestBody @Valid EnderecoUpdateRequest request
     ) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(enderecoService.atualizar(request));
+        return ResponseEntity.status(HttpStatus.OK).body(enderecoService.atualizar(request));
     }
 }
