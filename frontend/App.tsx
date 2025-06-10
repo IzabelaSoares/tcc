@@ -1,10 +1,10 @@
-
 import "./global.css";
-import { Text, View, TouchableOpacity } from 'react-native';
+import { useLoadFonts } from "./src/hooks/useLoadFonts";
 import Home from "./src/pages/Home";
 
 export default function App() {
-  return (
-   <Home/>
-  );
+  const fontsLoaded = useLoadFonts();
+
+  if (!fontsLoaded) return null;
+  return <Home />;
 }
