@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <TouchableOpacity
-      className={`items-center justify-center bg-[#3a5a40] rounded-lg px-4 py-3 ${className}`}
+      className={`items-center justify-center bg-green-700 rounded-lg px-4 py-3 ${className}`}
       {...rest}
     >
       {children ? (
