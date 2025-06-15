@@ -18,7 +18,7 @@ export function FormFieldsRenderer<T extends readonly FormField[]>({
       {fields.map((field) => (
         <View
           key={field.id}
-          className="w-full h-14 bg-white rounded-lg border border-gray-200 justify-center px-2 mb-2"
+          className="w-full h-14 bg-white rounded-lg justify-center px-2 mb-2"
         >
           <Text className="text-black-100 text-base font-medium mb-1">
             {field.label}

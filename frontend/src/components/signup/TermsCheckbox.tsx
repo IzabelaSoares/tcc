@@ -17,7 +17,7 @@ export default function TermsCheckbox({
     >
       <View
         className={`w-5 h-5 rounded ${
-          acceptedTerms ? "bg-green-700" : "border border-gray-400"
+          acceptedTerms ? "bg-green-700" : "bg-stone-100"
         }`}
       />
       <Text className="text-black-100 text-base">

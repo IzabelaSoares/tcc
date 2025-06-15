@@ -16,6 +16,17 @@ module.exports = {
         extrabold: ["Poppins_800ExtraBold"],
         black: ["Poppins_900Black"],
       },
+      fontSize: {
+        xs: 12,
+        sm: 14,
+        base: 16,
+        lg: 18,
+        xl: 20,
+        "2xl": 24,
+        "3xl": 30,
+        "4xl": 36,
+        "5xl": 48,
+      },
       colors: {
         background: "#DAD7CD",
         secondary: "#A3B18A",
@@ -45,7 +56,7 @@ module.exports = {
         },
       },
       backgroundColor: {
-        DEFAULT: "#DAD7CD",
+        DEFAULT: "#F6F6F6",
         primary: "#588157",
         secondary: "#A3B18A",
         danger: "#80171A",

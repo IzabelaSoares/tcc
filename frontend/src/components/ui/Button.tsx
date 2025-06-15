@@ -18,8 +18,8 @@ const variantStyles: Record<
     text: "text-white",
   },
   secondary: {
-    container: "bg-gray-200",
-    text: "text-black",
+    container: "bg-stone-100",
+    text: "text-green-700",
   },
   danger: {
     container: "bg-red-600",
@@ -49,7 +49,7 @@ const Button: React.FC<ButtonProps> = ({
       {children ? (
         children
       ) : title ? (
-        <Text className={`font-semibold ${text} ${textClassName}`}>
+        <Text className={`font-bold text-xl ${text} ${textClassName}`}>
           {title}
         </Text>
       ) : null}
