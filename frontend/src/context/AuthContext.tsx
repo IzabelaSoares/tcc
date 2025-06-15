@@ -8,7 +8,11 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+interface props {
+  children: ReactNode
+}
+
+export const AuthProvider = ({ children }: props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = () => setIsLoggedIn(true);
