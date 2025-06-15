@@ -12,7 +12,7 @@ export function FormFieldsRenderer<T extends readonly FormField[]>({
   formValues,
   setFormValues,
 }: Props<T>) {
-  const colors = "text-black-100 text-sm placeholder:text-gray-800"
+  const colors = "text-black-100 text-sm placeholder:text-gray-800";
   return (
     <>
       {fields.map((field) => (

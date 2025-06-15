@@ -1,12 +1,15 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from "react-native";
 
 interface props {
-    setAcceptedTerms: React.Dispatch<React.SetStateAction<boolean>>;
-    acceptedTerms: boolean
+  setAcceptedTerms: React.Dispatch<React.SetStateAction<boolean>>;
+  acceptedTerms: boolean;
 }
 
-export default function TermsCheckbox({ acceptedTerms, setAcceptedTerms }: props) {
+export default function TermsCheckbox({
+  acceptedTerms,
+  setAcceptedTerms,
+}: props) {
   return (
     <TouchableOpacity
       className="flex-row items-center gap-2 mt-2"

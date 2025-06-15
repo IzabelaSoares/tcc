@@ -1,42 +1,42 @@
-import React from 'react';
-import { TouchableOpacity, Text, TouchableOpacityProps } from 'react-native';
+import React from "react";
+import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
 
 interface ButtonProps extends TouchableOpacityProps {
   title?: string;
-  variant?: 'primary' | 'secondary' | 'danger' | 'default';
+  variant?: "primary" | "secondary" | "danger" | "default";
   className?: string;
   textClassName?: string;
   children?: React.ReactNode;
 }
 
 const variantStyles: Record<
-  NonNullable<ButtonProps['variant']>,
+  NonNullable<ButtonProps["variant"]>,
   { container: string; text: string }
 > = {
   primary: {
-    container: 'bg-green-700',
-    text: 'text-white',
+    container: "bg-green-700",
+    text: "text-white",
   },
   secondary: {
-    container: 'bg-gray-200',
-    text: 'text-black',
+    container: "bg-gray-200",
+    text: "text-black",
   },
   danger: {
-    container: 'bg-red-600',
-    text: 'text-white',
+    container: "bg-red-600",
+    text: "text-white",
   },
   default: {
-    container: 'bg-gray-500',
-    text: 'text-white',
+    container: "bg-gray-500",
+    text: "text-white",
   },
 };
 
 const Button: React.FC<ButtonProps> = ({
   title,
   children,
-  variant = 'primary',
-  className = '',
-  textClassName = '',
+  variant = "primary",
+  className = "",
+  textClassName = "",
   ...rest
 }) => {
   const { container, text } = variantStyles[variant];

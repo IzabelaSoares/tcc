@@ -29,9 +29,7 @@ export function useLoadFonts() {
   useEffect(() => {
     if (fontsLoaded) {
       (Text as any).defaultProps = (Text as any).defaultProps || {};
-      (Text as any).defaultProps.style = [
-        { fontFamily: "Poppins_400Regular" },
-      ];
+      (Text as any).defaultProps.style = [{ fontFamily: "Poppins_400Regular" }];
     }
   }, [fontsLoaded]);
 
