@@ -1,18 +1,17 @@
 import { View } from "react-native";
-import { LogoTitle } from "../../components/logo";
-import { LoginLink } from "../../components/link";
-import Tagline from "../../components/home/Tagline";
-import Illustration from "../../components/home/Illustration";
-import CreateAccountButton from "../../components/home/CreateAccountButton";
+import { LogoTitle, TagLine } from "../../components/logo";
+import { ForgotPassword, LoginLink } from "../../components/login";
+import { Illustration, CreateAccountButton } from "../../components/home";
 
 export default function Home() {
   return (
     <View className="flex-1 justify-center items-center bg-primary px-6">
       <LogoTitle textColor="text-white" />
-      <Tagline />
+      <TagLine />
       <Illustration />
       <CreateAccountButton />
       <LoginLink />
+      <ForgotPassword/>
     </View>
   );
 }

@@ -1,5 +1,8 @@
 import { View } from "react-native";
+interface props {
+  className?: string
+}
 
-export function Separator({ className }: { className?: string }) {
-  return <View className={`h-px bg-black-100 ${className}`} />;
+export function Separator({ className }: props) {
+  return <View className={`h-px ${className}`} />;
 }

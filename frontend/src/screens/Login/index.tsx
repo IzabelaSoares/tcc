@@ -1,18 +1,25 @@
 import { View } from "react-native";
-import { LogoTitle } from "../../components/logo";
-import { LoginLink } from "../../components/link";
-import Tagline from "../../components/home/Tagline";
-import Illustration from "../../components/home/Illustration";
-import CreateAccountButton from "../../components/home/CreateAccountButton";
+import { LogoTitle, TagLine } from "../../components/logo";
+import { SignUpLink } from "../../components/signup";
+import {
+  ForgotPassword,
+  LoginForm,
+  LoginGoogleButton,
+  LoginButton,
+  LoginSeparator
+} from "../../components/login";
 
 export default function Login() {
   return (
     <View className="flex-1 justify-center items-center bg-primary px-6">
       <LogoTitle textColor="text-white" />
-      <Tagline />
-      <Illustration />
-      <CreateAccountButton />
-      <LoginLink />
+      <TagLine />
+      <LoginForm />
+      <LoginButton />
+      <LoginSeparator/>
+      <LoginGoogleButton />
+      <SignUpLink />
+      <ForgotPassword />
     </View>
   );
 }
