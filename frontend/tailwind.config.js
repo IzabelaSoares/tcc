@@ -37,6 +37,12 @@ module.exports = {
         red: {
           800: "#80171A",
         },
+        gray: {
+          800:  "#5f5f5f"
+        },
+        black: {
+          100: "#1d1d1d",
+        },
       },
       backgroundColor: {
         DEFAULT: "#DAD7CD",
