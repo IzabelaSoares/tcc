@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { View, Text } from "react-native";
 
-export default function index() {
+export default function Home() {
   return (
-    <div>Home autenticado</div>
-  )
+    <View>
+      <Text>Home autenticado</Text>
+    </View>
+  );
 }

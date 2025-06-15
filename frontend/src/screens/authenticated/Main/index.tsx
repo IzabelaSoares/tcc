@@ -1,7 +1,8 @@
 import React from 'react'
+import { View } from 'react-native'
 
 export default function Main() {
   return (
-    <div>Main autenticado</div>
+    <View>Main autenticado</View>
   )
 }
