@@ -1,13 +1,13 @@
 import { View } from "react-native";
-import { LogoTitle, TagLine } from "../../components/logo";
-import { SignUpLink } from "../../components/signup";
+import { LogoTitle, TagLine } from "../../../components/logo";
+import { SignUpLink } from "../../../components/signup";
 import {
   ForgotPassword,
   LoginForm,
   LoginGoogleButton,
   LoginButton,
   LoginSeparator
-} from "../../components/login";
+} from "../../../components/login";
 
 export default function Login() {
   return (

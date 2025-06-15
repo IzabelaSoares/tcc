@@ -1,7 +1,7 @@
 import { View } from "react-native";
-import { LogoTitle, TagLine } from "../../components/logo";
-import { ForgotPassword, LoginLink } from "../../components/login";
-import { Illustration, CreateAccountButton } from "../../components/home";
+import { LogoTitle, TagLine } from "../../../components/logo";
+import { ForgotPassword, LoginLink } from "../../../components/login";
+import { Illustration, CreateAccountButton } from "../../../components/home";
 
 export default function Home() {
   return (

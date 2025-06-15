@@ -1,21 +1,19 @@
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, Login, SignUp } from '../screens';
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as AuthScreens from '../screens/auth';
 
-type AuthStackParamList = {
-  Login: undefined;
-  SignUp: undefined;
-  Home: undefined
-};
-
-const Stack = createNativeStackNavigator<AuthStackParamList>();
+const Stack = createNativeStackNavigator();
 
 export default function AuthStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="SignUp" component={SignUp} />
+      {Object.entries(AuthScreens).map(([name, Component]) => (
+        <Stack.Screen
+          key={name}
+          name={name}
+          component={Component as React.ComponentType<any>}
+        />
+      ))}
     </Stack.Navigator>
   );
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import { View } from "react-native";
-import { LogoTitle } from "../../components/logo";
-import { LoginGoogleButton, LoginLink } from "../../components/login";
+import { LogoTitle } from "../../../components/logo";
+import { LoginGoogleButton, LoginLink } from "../../../components/login";
 import {
   SignUpSeparator,
   SignUpForm,
   SignUpButton,
-} from "../../components/signup";
+} from "../../../components/signup";
 
 export default function SignUp() {
   return (
