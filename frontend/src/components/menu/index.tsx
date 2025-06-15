@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, TouchableOpacity } from "react-native";
 import { IconHome, IconPeople, IconSearch, IconBook, IconUser } from "../icon";
 
