@@ -1,4 +1,4 @@
-import { Home, Login, SignUp } from '../pages';
+import { Home, Login, SignUp } from '../screens';
 
 export type AppStackParamList = {
   Login: undefined;
