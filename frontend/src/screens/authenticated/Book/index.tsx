@@ -1,12 +1,11 @@
-import React from "react";
 import { View, Text } from "react-native";
 import { LogoTitle } from "../../../components/logo";
 
-export default function Home() {
+export default function Book() {
   return (
-    <View className="flex-1 justify-center items-center bg-primary" >
+    <View className="flex-1 justify-center items-center bg-primary">
       <LogoTitle textColor="text-white" />
-      <Text>Home</Text>
+      <Text>Book</Text>
     </View>
   );
 }
