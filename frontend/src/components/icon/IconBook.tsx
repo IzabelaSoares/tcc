@@ -3,7 +3,7 @@ import Svg, { Path } from "react-native-svg";
 import IconWrapper from "./IconWrapper";
 import { IconType } from "../../types/IconType";
 
-export default function IconBook({ size = 48, color }: IconType) {
+export default function IconBook({ size = 36, color }: IconType) {
   const scale = size / 48;
   return (
     <IconWrapper>

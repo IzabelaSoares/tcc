@@ -37,7 +37,7 @@ export default function ItemMenu({
 
   return (
     <TouchableOpacity
-      key={index}
+      key={`menu-item-${index}`}
       onPress={() => onPress(item, index, isFocused)}
       className={`w-12 h-12 p-0 rounded-full items-center justify-center ${
         isFocused ? "bg-gray-200" : ""
