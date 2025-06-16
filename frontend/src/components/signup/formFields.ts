@@ -1,6 +1,6 @@
-import { FormField } from "../../types/FormFieldType";
+import { FormFieldType } from "../../types/FormFieldType";
 
-export const cadastroFormFields: FormField[] = [
+export const cadastroFormFields: FormFieldType[] = [
   {
     id: "nome",
     label: "Nome completo",

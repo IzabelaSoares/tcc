@@ -1,13 +1,13 @@
-import { FormField, FormValues } from "../../types/FormFieldType";
+import { FormFieldType, FormValues } from "../../types/FormFieldType";
 import { TextInput, View, Text } from "react-native";
 
-interface Props<T extends readonly FormField[]> {
+interface Props<T extends readonly FormFieldType[]> {
   fields: T;
   formValues: FormValues<T>;
   setFormValues: React.Dispatch<React.SetStateAction<FormValues<T>>>;
 }
 
-export function FormFieldsRenderer<T extends readonly FormField[]>({
+export function FormFieldsRenderer<T extends readonly FormFieldType[]>({
   fields,
   formValues,
   setFormValues,

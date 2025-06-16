@@ -1,6 +1,6 @@
-import { FormField } from "../../types/FormFieldType";
+import { FormFieldType } from "../../types/FormFieldType";
 
-export const loginFormFields: FormField[] = [
+export const loginFormFields: FormFieldType[] = [
   { 
     id: "email", 
     label: "E-mail", 
