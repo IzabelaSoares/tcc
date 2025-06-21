@@ -34,6 +34,7 @@ export default function Menu({
     <View className="absolute bottom-0 left-0 right-0 h-24 bg-background flex-row items-center justify-between px-4 pb-8 pt-4">
       {navigationItems.map((item, index) => (
         <ItemMenu
+        key={`menu-item-${index}`}
           isFocused={state.index === index}
           item={item}
           index={index}
