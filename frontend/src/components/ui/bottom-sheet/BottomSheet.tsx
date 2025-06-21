@@ -28,7 +28,7 @@ export default function BottomSheet({ children }: props) {
   return (
     <Animated.View
       style={animatedViewStyle}
-      className="bg-white rounded-t-[50px] px-4 pt-2 pb-4"
+      className="bg-background rounded-t-[50px] px-4 pt-2 pb-4"
       {...panHandlers}
     >
       <BottomSheetHandle />

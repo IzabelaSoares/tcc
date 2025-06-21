@@ -31,7 +31,7 @@ export default function Menu({
   navigation,
 }: BottomTabBarProps) {
   return (
-    <View className="absolute bottom-0 left-0 right-0 h-24 bg-background flex-row items-center justify-between px-4 pb-8 pt-4">
+    <View className="absolute bottom-0 left-0 right-0 h-24 bg-white flex-row items-center justify-between px-4 pb-8 pt-4">
       {navigationItems.map((item, index) => (
         <ItemMenu
           key={`menu-item-${index}`}

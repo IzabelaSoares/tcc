@@ -4,7 +4,7 @@ import { Animated, Dimensions, PanResponder } from 'react-native';
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function useBottomSheetAnimation() {
-  const MIN_HEIGHT = SCREEN_HEIGHT * 0.3;
+  const MIN_HEIGHT = SCREEN_HEIGHT * 0.4;
   const translateY = useRef(new Animated.Value(SCREEN_HEIGHT - MIN_HEIGHT)).current;
   const [isExpanded, setIsExpanded] = useState(false);
 

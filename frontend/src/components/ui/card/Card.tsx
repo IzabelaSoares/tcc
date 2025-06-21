@@ -7,7 +7,7 @@ interface props {
 
 export default function Card({ children }: props) {
   return (
-    <View className="h-[120px] w-full rounded-[1rem] bg-white shadow p-4">
+    <View className="h-[120px] w-full rounded-[1rem] bg-primary-dark shadow p-4 mt-8 flex-row justify-between items-center">
       {children}
     </View>
   );
