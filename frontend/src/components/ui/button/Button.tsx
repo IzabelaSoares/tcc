@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native";
 
-interface ButtonProps extends TouchableOpacityProps {
+interface props extends TouchableOpacityProps {
   title?: string;
   variant?: "primary" | "secondary" | "danger" | "default";
   className?: string;
@@ -10,7 +10,7 @@ interface ButtonProps extends TouchableOpacityProps {
 }
 
 const variantStyles: Record<
-  NonNullable<ButtonProps["variant"]>,
+  NonNullable<props["variant"]>,
   { container: string; text: string }
 > = {
   primary: {
@@ -31,14 +31,14 @@ const variantStyles: Record<
   },
 };
 
-const Button: React.FC<ButtonProps> = ({
+export default function Button({
   title,
   children,
   variant = "primary",
   className = "",
   textClassName = "",
   ...rest
-}) => {
+}: props) {
   const { container, text } = variantStyles[variant];
 
   return (
@@ -55,6 +55,4 @@ const Button: React.FC<ButtonProps> = ({
       ) : null}
     </TouchableOpacity>
   );
-};
-
-export default Button;
+}

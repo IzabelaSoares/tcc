@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import Button from "../ui/Button";
+import Button from "../ui/button/Button";
 
 export default function CreateAccountButton() {
   const navigation = useNavigation<any>();
