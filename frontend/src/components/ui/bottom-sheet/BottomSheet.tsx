@@ -5,11 +5,13 @@ import BottomSheetHandle from "./BottomSheetHandle";
 
 interface props {
   children: React.ReactNode;
+  minHeight?: number
+  minTranslateY?: number
 }
 
-export default function BottomSheet({ children }: props) {
+export default function BottomSheet({ children, minHeight = 0.4, minTranslateY = 150 }: props) {
   const { height: SCREEN_HEIGHT } = Dimensions.get("window");
-  const { translateY, panHandlers, collapse } = useBottomSheetAnimation();
+  const { translateY, panHandlers, collapse } = useBottomSheetAnimation({ minHeight, minTranslateY });
   const animatedViewStyle: StyleProp<ViewStyle> = [
     {
       height: SCREEN_HEIGHT,
