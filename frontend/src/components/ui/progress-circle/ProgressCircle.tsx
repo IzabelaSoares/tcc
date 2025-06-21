@@ -1,24 +1,28 @@
-import React, { useEffect, useRef } from "react";
-import { View, Text, Animated } from "react-native";
-import Svg, { Circle } from "react-native-svg";
+import React, { useEffect, useRef } from 'react';
+import { View, Animated } from 'react-native';
+import Svg from 'react-native-svg';
+import ProgressBackgroundCircle from './ProgressBackgroundCircle';
+import ProgressAnimatedCircle from './ProgressAnimatedCircle';
+import ProgressInnerFill from './ProgressInnerFill';
+import ProgressText from './ProgressText';
 
-const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-
-interface ProgressCircleProps {
-  percentage: number; // Ex: 30 para 30%
-  size?: number; // Tamanho externo do círculo
-  strokeWidth?: number; // Espessura da borda
-  color?: string; // Cor da parte preenchida
-  backgroundColor?: string; // Cor do fundo
+interface props {
+  percentage: number;
+  size?: number;
+  strokeWidth?: number;
+  color?: string;
+  backgroundColor?: string;
+  fillColor?: string;
 }
 
 export default function ProgressCircle({
   percentage,
   size = 80,
   strokeWidth = 8,
-  color = "#FFA500", // Laranja
-  backgroundColor = "#D3D3D3", // Cinza claro
-}: ProgressCircleProps) {
+  color = '#FFA500',
+  backgroundColor = '#D3D3D3',
+  fillColor = '#3A5A40',
+}: props) {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -38,49 +42,34 @@ export default function ProgressCircle({
 
   return (
     <View className="justify-center items-center">
-      <Svg
-        color="#fff"
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-      >
-        {/* Fundo (círculo cinza) */}
-        <Circle
-          stroke={backgroundColor}
+      <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <ProgressBackgroundCircle
           cx={size / 2}
           cy={size / 2}
           r={radius}
           strokeWidth={strokeWidth}
+          backgroundColor={backgroundColor}
         />
 
-        {/* Progresso (círculo laranja) */}
-        <AnimatedCircle
-          stroke={color}
+        <ProgressAnimatedCircle
           cx={size / 2}
           cy={size / 2}
           r={radius}
           strokeWidth={strokeWidth}
-          strokeDasharray={circumference}
+          color={color}
+          circumference={circumference}
           strokeDashoffset={strokeDashoffset}
-          strokeLinecap="round"
-          rotation="-90"
-          originX={size / 2}
-          originY={size / 2}
         />
 
-        {/* Preenchimento interno (pra cobrir o fundo preto) */}
-        <Circle
-          fill="#3A5A40" // Aqui você coloca a cor do fundo do seu card (exemplo: bg-primary-dark ou qualquer outro)
+        <ProgressInnerFill
           cx={size / 2}
           cy={size / 2}
-          r={radius} // Um pouco menor pra caber dentro
+          r={radius}
+          fillColor={fillColor}
         />
       </Svg>
 
-      {/* Texto central */}
-      <View className="absolute">
-        <Text className="text-white font-bold text-lg">{`${percentage}%`}</Text>
-      </View>
+      <ProgressText percentage={percentage} />
     </View>
   );
 }
