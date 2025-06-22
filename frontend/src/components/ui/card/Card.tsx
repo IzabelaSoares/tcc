@@ -3,11 +3,12 @@ import { View } from 'react-native';
 
 interface props {
   children: ReactNode;
+  className?: string;
 }
 
-export default function Card({ children }: props) {
+export default function Card({ children, className }: props) {
   return (
-    <View className="h-[120px] w-full rounded-[1rem] bg-primary-dark shadow p-4 mt-8 flex-row justify-between items-center">
+    <View className={className}>
       {children}
     </View>
   );

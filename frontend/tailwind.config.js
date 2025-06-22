@@ -55,6 +55,9 @@ module.exports = {
         black: {
           100: "#1d1d1d",
         },
+        brown: {
+          600: "#92643D"
+        }
       },
       backgroundColor: {
         DEFAULT: "#F6F6F6",

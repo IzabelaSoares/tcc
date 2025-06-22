@@ -1,15 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { LogoTitle } from "../../../components/logo";
-import { HomeBottomSheet } from "../../../components/home";
+import { HomeBottomSheet, HomeComunication } from "../../../components/home";
 
 export default function Home() {
   return (
-    <View className="flex-1 justify-center items-center bg-primary">
+    <View className="flex-1 bg-primary pt-20">
       <LogoTitle textColor="text-white" />
-      <Text>Home</Text>
-
-      <HomeBottomSheet/>
+      <HomeComunication />
+      <HomeBottomSheet />
     </View>
   );
 }

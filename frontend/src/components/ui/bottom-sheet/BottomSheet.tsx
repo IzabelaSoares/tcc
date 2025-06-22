@@ -9,7 +9,7 @@ interface props {
   minTranslateY?: number
 }
 
-export default function BottomSheet({ children, minHeight = 0.4, minTranslateY = 150 }: props) {
+export default function BottomSheet({ children, minHeight = 0.1, minTranslateY = 0 }: props) {
   const { height: SCREEN_HEIGHT } = Dimensions.get("window");
   const { translateY, panHandlers, collapse } = useBottomSheetAnimation({ minHeight, minTranslateY });
   const animatedViewStyle: StyleProp<ViewStyle> = [
@@ -19,6 +19,7 @@ export default function BottomSheet({ children, minHeight = 0.4, minTranslateY =
       top: 0,
       left: 0,
       right: 0,
+      zIndex: 2
     },
     { transform: [{ translateY }] },
   ];

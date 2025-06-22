@@ -18,7 +18,7 @@ export default function BookCard({
   ultimaLeitura,
 }: props) {
   return (
-    <Card>
+    <Card className="h-[120px] w-full rounded-[1rem] bg-primary-dark shadow p-4 mt-6 flex-row justify-between items-center" >
       <BookCardProgress percentage={percentage} />
       <BookCardDetails
         titulo={titulo}
