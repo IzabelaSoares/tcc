@@ -9,3 +9,4 @@ export { default as IconBox } from "./IconBox";
 export { default as IconLamp } from "./IconLamp";
 export { default as IconMap } from "./IconMap";
 export { default as IconPicture } from "./IconPicture";
+export { default as IconMenuHamburger } from "./IconMenuHamburger";
