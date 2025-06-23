@@ -5,7 +5,7 @@ import ProfileStatistics from "./ProfileStatistics";
 
 export default function ProfileAboutCard() {
   return (
-    <ContentCard top={0.2}>
+    <ContentCard top={0.3}>
       <Card className="bg-white justify-top m-4 rounded-2xl" shadow>
         <Text className="text-xl justify-start m-4">
           Apaixonada por histórias e café Sempre achei que bons livros foram
