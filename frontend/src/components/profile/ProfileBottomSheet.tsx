@@ -4,7 +4,7 @@ import ProfileRewards from "./ProfileRewards";
 
 export default function ProfileBottomSheet() {
   return (
-    <BottomSheet minHeight={0.33} minTranslateY={150}>
+    <BottomSheet minHeight={0.33} minTranslateY={250}>
       <ProfileRewardsText />
       <ProfileRewards/>
     </BottomSheet>
