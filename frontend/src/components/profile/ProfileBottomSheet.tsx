@@ -1,10 +1,10 @@
 import { BottomSheet } from "../ui";
-import ProfileRewards from "./ProfileRewards";
+import ProfileRewardsText from "./ProfileRewardText";
 
 export default function ProfileBottomSheet() {
   return (
     <BottomSheet minHeight={0.33} minTranslateY={150}>
-      <ProfileRewards />
+      <ProfileRewardsText />
     </BottomSheet>
   );
 }
