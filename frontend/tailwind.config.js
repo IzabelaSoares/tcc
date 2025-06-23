@@ -39,6 +39,9 @@ module.exports = {
         stone: {
           100: "#DAD7CD",
         },
+        blue: {
+          200: "#99D1FF"
+        },
         green: {
           200: "#A3B18A",
           600: "#588157",
@@ -46,6 +49,7 @@ module.exports = {
           800: "#344E41",
         },
         red: {
+          200: "#FF8888",
           800: "#80171A",
         },
         gray: {
@@ -57,7 +61,13 @@ module.exports = {
         },
         brown: {
           600: "#92643D"
-        }
+        },
+        pink: {
+          200: "#FFAED5"
+        },
+        purple: {
+          200: "#E3CCFF"
+        },
       },
       backgroundColor: {
         DEFAULT: "#F6F6F6",
