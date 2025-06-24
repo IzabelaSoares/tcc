@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AppStack from "./AppStack";
 import Menu from "../components/menu";
 import {
+  AddressScreen,
   BookScreen,
   CommunityScreen,
   ProfileScreen,
@@ -22,6 +23,7 @@ export default function AppTabs() {
       <Tab.Screen name={NAVIGATION_MENU.SEARCH.name } component={SearchSreen} />
       <Tab.Screen name={NAVIGATION_MENU.BOOK.name } component={BookScreen} />
       <Tab.Screen name={NAVIGATION_MENU.PROFILE.name } component={ProfileScreen} />
+      <Tab.Screen name={NAVIGATION_MENU.ADDRESS.name } component={AddressScreen} />
     </Tab.Navigator>
   );
 }
