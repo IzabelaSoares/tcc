@@ -8,7 +8,7 @@ export default function EditConfirmCancelButton() {
       <Button
         variant="default"
         title="Cancelar"
-        className="w-1/2 mr-2 h-[45px]"
+        className="w-1/2 mr-2 h-[45px] border-2"
       />
       <Button
         variant="primary"

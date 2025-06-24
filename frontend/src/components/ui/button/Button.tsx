@@ -26,7 +26,7 @@ const variantStyles: Record<
     text: "text-white",
   },
   default: {
-    container: "bg-white border-2 border-green-700",
+    container: "bg-white border-green-700",
     text: "text-green-700",
   },
 };
