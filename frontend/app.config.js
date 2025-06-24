@@ -5,9 +5,7 @@ export default {
   sdkVersion: "53.0.0", 
   platforms: ["ios", "android", "web"],
   orientation: "portrait",
-  icon: "./assets/icon.png",
   splash: {
-    image: "./assets/splash.png",
     resizeMode: "contain",
     backgroundColor: "#ffffff"
   },

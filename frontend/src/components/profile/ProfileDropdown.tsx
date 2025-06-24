@@ -3,16 +3,10 @@ import { Dropdown } from "../ui";
 import { DropdownItemType } from "../../types/DropdownItemType";
 import { IconMenuHamburger } from "../icon";
 
-export default function ProfileDropdown() {
-  const items: DropdownItemType[] = [
-    {
-      label: "Editar",
-      onClick: () => {},
-    },
-    {
-      label: "Sair",
-      onClick: () => {},
-    },
-  ];
+interface props {
+  items: DropdownItemType[];
+}
+
+export default function ProfileDropdown({ items }: props) {
   return <Dropdown items={items} Icon={<IconMenuHamburger />} />;
 }
