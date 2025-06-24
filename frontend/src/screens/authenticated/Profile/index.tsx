@@ -1,11 +1,9 @@
 import { View,  } from "react-native";
 import {
-  ProfileAboutCard,
+  ProfileApresentation,
   ProfileAvatar,
-  ProfileBottomSheet,
   ProfileDropdown,
-  ProfileSubTitle,
-  ProfileTitle,
+  ProfileEdition,
 } from "../../../components/profile";
 
 export default function Profile() {
@@ -13,10 +11,8 @@ export default function Profile() {
     <View className="flex-1 bg-primary pt-20">
       <ProfileDropdown />
       <ProfileAvatar userName="Izabela Soares" />
-      <ProfileTitle userName={"Izabela Soares"} />
-      <ProfileSubTitle userTitle={"Exploradora"} />
-      <ProfileAboutCard />
-      <ProfileBottomSheet />
+      {/** <ProfileApresentation/> */}
+      <ProfileEdition/>
     </View>
   );
 }

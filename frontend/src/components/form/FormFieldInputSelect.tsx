@@ -18,7 +18,7 @@ export function FormFieldInputSelect({ field, value, onChange }: Props) {
   };
 
   return (
-    <View className="w-full mb-2">
+    <View className="w-full mt-2 mb-2">
       <FormFieldInputSelectValue
         label={field.label}
         value={value}
