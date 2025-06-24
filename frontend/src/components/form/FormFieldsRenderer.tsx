@@ -1,7 +1,11 @@
 import { FormFieldType, FormValues } from "../../types/FormFieldType";
-import { TextInput, View, Text } from "react-native";
+import { FormFieldInput } from "./FormFieldInput";
+import { FormFieldInputPassword } from "./FormFieldInputPassword";
+import { FormFieldInputArea } from "./FormFieldInputArea";
+import { FormFieldInputDate } from "./FormFieldInputDate";
+import { FormFieldInputSelect } from "./FormFieldInputSelect";
 
-interface Props<T extends readonly FormFieldType[]> {
+interface props<T extends readonly FormFieldType[]> {
   fields: T;
   formValues: FormValues<T>;
   setFormValues: React.Dispatch<React.SetStateAction<FormValues<T>>>;
@@ -11,30 +15,64 @@ export function FormFieldsRenderer<T extends readonly FormFieldType[]>({
   fields,
   formValues,
   setFormValues,
-}: Props<T>) {
-  const colors = "text-black-100 text-sm placeholder:text-gray-800";
+}: props<T>) {
   return (
     <>
-      {fields.map((field) => (
-        <View
-          key={field.id}
-          className="w-full h-14 bg-white rounded-lg justify-center px-2 mb-2"
-        >
-          <Text className="text-black-100 text-base font-medium mb-1">
-            {field.label}
-          </Text>
-          <TextInput
-            className={`h-[21px] p-0 text-sm ${colors}`}
-            key={field.id}
-            placeholder={field.placeholder}
-            value={formValues[field.id as keyof FormValues<T>]}
-            secureTextEntry={field.type === "password"}
-            onChangeText={(text) =>
-              setFormValues((prev) => ({ ...prev, [field.id]: text }))
-            }
-          />
-        </View>
-      ))}
+      {fields.map((field) => {
+        const value = formValues[field.id as keyof FormValues<T>];
+        const onChange = (text: string) =>
+          setFormValues((prev) => ({ ...prev, [field.id]: text }));
+
+        switch (field.type) {
+          case "password":
+            return (
+              <FormFieldInputPassword
+                key={field.id}
+                field={field}
+                value={value}
+                onChange={onChange}
+              />
+            );
+          case "area":
+            return (
+              <FormFieldInputArea
+                key={field.id}
+                field={field}
+                value={value}
+                onChange={onChange}
+              />
+            );
+          case "date":
+            return (
+              <FormFieldInputDate
+                key={field.id}
+                field={field}
+                value={value}
+                onChange={onChange}
+              />
+            );
+          case "select":
+            return (
+              <FormFieldInputSelect
+                key={field.id}
+                field={field as FormFieldType & { options: string[] }}
+                value={value}
+                onChange={(selected) =>
+                  setFormValues((prev) => ({ ...prev, [field.id]: selected }))
+                }
+              />
+            );
+          default:
+            return (
+              <FormFieldInput
+                key={field.id}
+                field={field}
+                value={value}
+                onChange={onChange}
+              />
+            );
+        }
+      })}
     </>
   );
 }
