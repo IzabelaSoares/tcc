@@ -6,7 +6,7 @@ import { loginFormFields } from "./formFields";
 
 type CadastroFormValues = FormValues<typeof loginFormFields>;
 
-export default function SignUpForm() {
+export default function LoginForm() {
   const [formValues, setFormValues] = useState<CadastroFormValues>(
     loginFormFields.reduce(
       (acc, field) => ({ ...acc, [field.id]: field.value }),
