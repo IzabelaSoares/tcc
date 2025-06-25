@@ -11,18 +11,18 @@ export default function EditOptionsButton() {
       <Button
         variant="default"
         title="Meus endereços"
-        className="w-full h-[56px] mb-2 border-2"
+        className="w-full h-[56px] mb-2"
         onPress={onPressAddress}
       />
       <Button
         variant="default"
         title="Alterar email"
-        className="w-full h-[56px] mb-2 border-2"
+        className="w-full h-[56px] mb-2"
       />
       <Button
         variant="default"
         title="Alterar senha"
-        className="w-full h-[56px] border-2"
+        className="w-full h-[56px]"
       />
     </View>
   );

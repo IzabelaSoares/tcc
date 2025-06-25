@@ -1,12 +1,12 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { LogoTitle } from '../../../components/logo'
+import React from "react";
+import { View } from "react-native";
+import { AddressContentCard, AddressTitle } from "../../../components/adress";
 
 export default function Address() {
   return (
-    <View className="flex-1 justify-center items-center bg-primary">
-      <LogoTitle textColor="text-white" />
-      <Text>Endereço</Text>
+    <View className="flex-1 bg-primary pt-24 ">
+      <AddressTitle />
+      <AddressContentCard />
     </View>
-  )
+  );
 }
