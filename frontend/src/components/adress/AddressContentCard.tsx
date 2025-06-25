@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { ContentCard } from "../ui";
-import AddressList from "./AddressList";
-import AddressButtons from "./AddressButtons";
+import AddressApresentation from "./Apresentation/AddressApresentation";
+import AddressEdition from "./Edition/AddressEdition";
 
 export default function AddressContentCard() {
+  const [isEditing, setIsEditing] = useState<boolean>(true);
+
+  const Address = () =>
+    isEditing ? <AddressEdition /> : <AddressApresentation />;
+
   return (
     <ContentCard top={0.2}>
-      <AddressList />
-      <AddressButtons />
+      <Address />
     </ContentCard>
   );
 }
