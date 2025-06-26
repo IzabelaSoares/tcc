@@ -1,4 +1,10 @@
 export { default as BookCard } from "./BookCard";
 export { default as BookCategoryList } from "./BookCategoryList";
 export { default as BookTitle } from "./BookTitle";
+export { default as BookContent } from "./BookContent";
 export { default as BookFavoriteTitle } from "./favorite/BookFavoriteTitle";
+export { default as BookSharedTitle } from "./shared/BookSharedTitle";
+export { default as BookPhysicalTitle } from "./physical/BookPhysicalTitle";
+export { default as BookBorrowTitle } from "./borrow/BookBorrowTitle";
+export { default as BookReadTitle } from "./read/BookReadTitle";
+export { default as BookDigitalTitle } from "./digital/BookDigitalTitle";

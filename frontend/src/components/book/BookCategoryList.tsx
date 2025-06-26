@@ -8,22 +8,22 @@ export default function BookCategoryList() {
       <View className="mt-4">
         <BookCategoryCard
           title="Livros digitais"
-          routeName={"Favorite"}
+          routeName={"Digital"}
           count={3}
         />
         <BookCategoryCard
           title="Livros fisicos"
-          routeName={"Favorite"}
+          routeName={"Physical"}
           count={3}
         />
         <BookCategoryCard
           title="Pegos emprestados"
-          routeName={"Favorite"}
+          routeName={"Borrow"}
           count={2}
         />
         <BookCategoryCard
           title="Compartilhados"
-          routeName={"Favorite"}
+          routeName={"Shared"}
           count={5}
         />
         <BookCategoryCard
@@ -33,7 +33,7 @@ export default function BookCategoryList() {
         />
         <BookCategoryCard
           title="Lidos"
-          routeName={"Favorite"}
+          routeName={"Read"}
           count={1}
         />
       </View>
