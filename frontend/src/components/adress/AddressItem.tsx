@@ -15,7 +15,7 @@ export default function AddressItem({ item }: props) {
   return (
     <View
       key={item.key}
-      className="flex flex-row my-2 py-2 border-b-[1px] border-[#C3C3C3]"
+      className="flex flex-row my-2 py-2 border-b-[1px] border-gray-100"
     >
       <AddressDetails title={item.title} address={item.address} />
       <AddressListButtons />

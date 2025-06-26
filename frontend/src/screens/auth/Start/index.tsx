@@ -10,7 +10,7 @@ export default function Start() {
     <View className="flex-1 justify-center items-center bg-primary px-6">
       <LogoTitle textColor="text-white" />
       <TagLine />
-      <Illustration className="w-[260px] h-[300px] mb-8" source={loginImage} />
+      <Illustration className="w-[260px] h-[300px] mb-8" source={loginImage} resizeMode="contain" />
       <CreateAccountButton />
       <LoginLink />
       <ForgotPassword/>

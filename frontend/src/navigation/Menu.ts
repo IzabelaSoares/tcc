@@ -2,6 +2,7 @@ import {
   AddressScreen,
   BookScreen,
   CommunityScreen,
+  BookFavoriteScreen,
   HomeScreen,
   ProfileScreen,
   SearchSreen,
@@ -13,5 +14,6 @@ export const NAVIGATION_MENU = {
   COMMUNITY: CommunityScreen,
   PROFILE: ProfileScreen,
   SEARCH: SearchSreen,
-  ADDRESS: AddressScreen
+  ADDRESS: AddressScreen,
+  BOOK_FAVORITE: BookFavoriteScreen
 };

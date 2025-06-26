@@ -8,7 +8,7 @@ import bookbanner from "../../../assets/images/book-image-banner.png";
 export default function HomeComunication() {
   return (
     <ContentCard>
-      <Illustration source={bookbanner} className="w-full h-40 my-2 px-4" />
+      <Illustration source={bookbanner} className="w-full h-40 my-2 px-4" resizeMode="contain" />
       <View className="flex-row justify-around">
         <NotificationCard />
         <ChatCard />

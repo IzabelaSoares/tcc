@@ -5,9 +5,10 @@ interface props {
   children: ReactNode;
   className?: string;
   shadow?: boolean;
+  onPress?: () => void;
 }
 
-export default function Card({ children, className, shadow }: props) {
+export default function Card({ children, className, shadow, onPress }: props) {
   let style = shadow
     ? {
         shadowColor: "#000",
