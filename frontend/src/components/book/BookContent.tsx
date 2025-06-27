@@ -1,4 +1,4 @@
-import { ContentCard } from "../ui";
+import { ContentCard, FloatButton } from "../ui";
 import BookItem from "./BookItem";
 
 export default function BookContent() {
@@ -6,6 +6,7 @@ export default function BookContent() {
     <ContentCard top={0.2}>
       <BookItem />
       <BookItem />
+      <FloatButton routeName="Inclusion" />
     </ContentCard>
   );
 }

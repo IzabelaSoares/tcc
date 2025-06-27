@@ -8,3 +8,5 @@ export { default as BookPhysicalTitle } from "./physical/BookPhysicalTitle";
 export { default as BookBorrowTitle } from "./borrow/BookBorrowTitle";
 export { default as BookReadTitle } from "./read/BookReadTitle";
 export { default as BookDigitalTitle } from "./digital/BookDigitalTitle";
+export { default as BookInclusionTitle } from "./inclusion/BookInclusionTitle";
+export { default as BookInclusionContent } from "./inclusion/BookInclusionContent";

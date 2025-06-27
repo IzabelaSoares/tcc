@@ -57,6 +57,10 @@ export default function AppTabs() {
         name={NAVIGATION_MENU.BOOK_SHARED.name}
         component={Screens.BookSharedScreen}
       />
+      <Tab.Screen
+        name={NAVIGATION_MENU.BOOK_INCLUSION.name}
+        component={Screens.BookInclusionScreen}
+      />
     </Tab.Navigator>
   );
 }

@@ -5,7 +5,7 @@ export default function Physical() {
   return (
     <View className="flex-1 bg-primary pt-24">
       <BookPhysicalTitle />
-      <BookContent />
+      <BookContent routeName="Inclusion" />
     </View>
   );
 }

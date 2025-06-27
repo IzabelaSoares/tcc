@@ -10,3 +10,4 @@ export { default as BookDigitalScreen } from "./Book/Digital";
 export { default as BookPhysicalScreen } from "./Book/Physical";
 export { default as BookBorrowScreen } from "./Book/Borrow";
 export { default as BookReadScreen } from "./Book/Read";
+export { default as BookInclusionScreen } from "./Book/Inclusion";

@@ -13,4 +13,5 @@ export const NAVIGATION_MENU = {
   BOOK_DIGITAL: Screens.BookDigitalScreen,
   BOOK_PHYSICAL: Screens.BookPhysicalScreen,
   BOOK_SHARED: Screens.BookSharedScreen,
+  BOOK_INCLUSION: Screens.BookInclusionScreen,
 };

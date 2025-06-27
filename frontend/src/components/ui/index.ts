@@ -7,3 +7,4 @@ export { default as Illustration } from "./illustration/Illustration";
 export { default as ProgressCircle } from "./progress-circle/ProgressCircle";
 export { default as Avatar } from "./avatar/Avatar";
 export { default as Dropdown } from "./dropdown/Dropdown";
+export { default as FloatButton } from "./button/FloatButton";
