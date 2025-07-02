@@ -1,25 +1,52 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-type AuthContextType = {
-  isLoggedIn: boolean;
-  login: () => void;
-  logout: () => void;
-};
+import React, { createContext, useContext, useState, ReactNode, useEffect, use } from "react";
+import { AuthContextType } from "../types/AuthContextType";
+import { getToken, removeToken, saveToken } from "../data/auth/authStorage";
+import { login } from "../data/auth/authApi";
+import { AuthRequestDTO } from "../../dtos/auth/AuthRequest";
+import { AuthUserDTO } from "../../dtos/auth/AuthUser";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const AuthProvider = ({ children }: props) => {
+  const [user, setUser] = useState<AuthUserDTO | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const login = () => setIsLoggedIn(true);
-  const logout = () => setIsLoggedIn(false);
+  useEffect(() => {
+    getToken().then((token) => {
+      setToken(token);
+      setIsLoggedIn(true);
+    });
+  }, []);
+
+  const loginUser = async (credentials: AuthRequestDTO) => {
+    const res = await login(credentials)
+    .then((response) => {
+      setToken(response.token);
+      setUser({ email: response.email, nome: response.nome });
+      setIsLoggedIn(true);    
+    })
+    .catch((error) => {
+      console.error("Erro ao fazer login:", error) ;
+      throw error;
+    });
+    
+  };
+
+  const logout = async () => {
+    await removeToken();
+    setToken(null);
+    setIsLoggedIn(false);
+  };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, login: loginUser, logout, user, token }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -28,7 +55,7 @@ export const AuthProvider = ({ children }: props) => {
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth deve ser usado dentro de AuthProvider');
+    throw new Error("useAuth deve ser usado dentro de AuthProvider");
   }
   return context;
 };

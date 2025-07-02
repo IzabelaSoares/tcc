@@ -5,8 +5,7 @@ import {
   ForgotPassword,
   LoginForm,
   LoginGoogleButton,
-  LoginButton,
-  LoginSeparator
+  LoginSeparator,
 } from "../../../components/login";
 
 export default function Login() {
@@ -15,8 +14,7 @@ export default function Login() {
       <LogoTitle textColor="text-white" />
       <TagLine />
       <LoginForm />
-      <LoginButton />
-      <LoginSeparator/>
+      <LoginSeparator />
       <LoginGoogleButton />
       <SignUpLink />
       <ForgotPassword />
