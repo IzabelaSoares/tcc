@@ -7,14 +7,14 @@ import LoginButton from "./LoginButton";
 import { AuthRequestDTO } from "../../../dtos/auth/AuthRequest";
 import { useAuth } from "../../context/AuthContext";
 
-type CadastroFormValues = FormValues<typeof loginFormFields>;
+type LoginFormValues = FormValues<typeof loginFormFields>;
 
 export default function LoginForm() {
   const { login } = useAuth();
-  const [formValues, setFormValues] = useState<CadastroFormValues>(
+  const [formValues, setFormValues] = useState<LoginFormValues>(
     loginFormFields.reduce(
       (acc, field) => ({ ...acc, [field.id]: field.value }),
-      {} as CadastroFormValues
+      {} as LoginFormValues
     )
   );
 

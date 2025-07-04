@@ -1,16 +1,16 @@
 import React from "react";
 import { ContentCard } from "../../ui";
 import ProfileEditionForm from "./EditionForm";
-import EditConfirmCancelButton from "./EditConfirmCancelButton";
-import EditOptionsButton from "./EditOptionsButton";
 
-export default function ProfileEdition() {
+interface props {
+  onChangeEditing: (isEditing: boolean) => void;
+}
+
+export default function ProfileEdition({ onChangeEditing }: props) {
   return (
     <>
       <ContentCard className="bg" top={0.25}>
-        <ProfileEditionForm />
-        <EditOptionsButton />
-        <EditConfirmCancelButton />
+        <ProfileEditionForm onChangeEditing={onChangeEditing}  />
       </ContentCard>
     </>
   );

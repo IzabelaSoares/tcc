@@ -5,7 +5,6 @@ import { LoginGoogleButton, LoginLink } from "../../../components/login";
 import {
   SignUpSeparator,
   SignUpForm,
-  SignUpButton,
 } from "../../../components/signup";
 
 export default function SignUp() {
@@ -15,7 +14,6 @@ export default function SignUp() {
       <LoginGoogleButton />
       <SignUpSeparator />
       <SignUpForm />
-      <SignUpButton />
       <LoginLink variant="black" />
     </View>
   );

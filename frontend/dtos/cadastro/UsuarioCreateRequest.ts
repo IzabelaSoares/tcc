@@ -1,7 +1,0 @@
-interface UsuarioCreateRequestDTO {
-
-}
-
-interface UsuarioUpdateRequestDTO {
-
-}

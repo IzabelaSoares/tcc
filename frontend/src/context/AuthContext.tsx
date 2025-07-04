@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }: props) => {
   }, []);
 
   const loginUser = async (credentials: AuthRequestDTO) => {
-    const res = await login(credentials)
+    await login(credentials)
     .then((response) => {
       setToken(response.token);
       setUser({ email: response.email, nome: response.nome });
@@ -34,7 +34,6 @@ export const AuthProvider = ({ children }: props) => {
       console.error("Erro ao fazer login:", error) ;
       throw error;
     });
-    
   };
 
   const logout = async () => {

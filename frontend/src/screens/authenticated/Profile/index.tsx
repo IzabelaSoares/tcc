@@ -8,10 +8,14 @@ import {
 import useProfile from "./useProfile";
 
 export default function Profile() {
-  const { items, isEditing } = useProfile();
+  const { items, isEditing, setIsEditing } = useProfile();
 
   const ProfileContent = () =>
-    isEditing ? <ProfileEdition /> : <ProfileApresentation />;
+    isEditing ? (
+      <ProfileEdition onChangeEditing={() => setIsEditing(false)} />
+    ) : (
+      <ProfileApresentation />
+    );
 
   return (
     <View className="flex-1 bg-primary pt-20">

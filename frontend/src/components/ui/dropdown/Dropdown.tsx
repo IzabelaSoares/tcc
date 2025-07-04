@@ -15,7 +15,7 @@ export default function Dropdown({ items = [], Icon }: props) {
   return (
     <View className="relative z-10 justify-end items-end mr-4">
       <DropdownButton onPress={() => setOpen(!open)} Icon={Icon} />
-      <DropdownContainer items={items} open={open} />
+      <DropdownContainer items={items} open={open} onClose={() => setOpen(false)} />
     </View>
   );
 }

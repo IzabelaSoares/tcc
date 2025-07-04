@@ -9,7 +9,7 @@ export default function useProfile() {
   const items: DropdownItemType[] = [
     {
       label: "Editar",
-      onClick: () => setIsEditing(!isEditing),
+      onClick: () => setIsEditing(true),
     },
     {
       label: "Sair",

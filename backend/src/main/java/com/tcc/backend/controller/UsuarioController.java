@@ -2,12 +2,10 @@ package com.tcc.backend.controller;
 
 import com.tcc.backend.annotation.usuario.UsuarioUpdateDocumentation;
 import com.tcc.backend.annotation.usuario.UsuarioUpdateRequestSchema;
-import com.tcc.backend.web.usuario.UsuarioCreateRequest;
-import com.tcc.backend.web.usuario.UsuarioResponse;
+import com.tcc.backend.web.usuario.*;
 import com.tcc.backend.service.UsuarioService;
 import com.tcc.backend.annotation.usuario.UsuarioCreateDocumentation;
 import com.tcc.backend.annotation.usuario.UsuarioCreateRequestSchema;
-import com.tcc.backend.web.usuario.UsuarioUpdateRequest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -37,11 +35,21 @@ public class UsuarioController {
 
     @UsuarioUpdateDocumentation
     @PutMapping
-    public ResponseEntity<UsuarioResponse> atualizar(
+    public ResponseEntity<UsuarioUpdateResponse> atualizar(
             @UsuarioUpdateRequestSchema
             @RequestBody @Valid UsuarioUpdateRequest request
     ) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(usuarioService.atualizar(request));
+                .body(usuarioService.atualizarDados(request));
+    }
+
+    @UsuarioUpdateDocumentation
+    @PutMapping("/senha")
+    public ResponseEntity<Void> atualizarSenha(
+            @UsuarioUpdateRequestSchema
+            @RequestBody @Valid UsuarioUpdatePasswordRequest request
+    ) {
+        usuarioService.atualizarSenha(request);
+        return ResponseEntity.noContent().build();
     }
 }
