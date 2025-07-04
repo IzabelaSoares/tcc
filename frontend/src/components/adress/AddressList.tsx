@@ -1,5 +1,7 @@
 import { View } from "react-native";
 import AddressItem from "./AddressItem";
+import { EnderecoApresentationDTO } from "../../../dtos/endereco/EnderecoApresentation";
+import { EnderecoResponseDTO } from "../../../dtos/endereco/EnderecoResponse";
 
 const items = [
   {
@@ -22,11 +24,22 @@ const items = [
   },
 ];
 
-export default function AddressList() {
+interface props {
+  onEdit: (endereco: EnderecoResponseDTO) => void;
+  onRemove: (id: string) => void;
+  enderecos: EnderecoResponseDTO[];
+}
+
+export default function AddressList({ enderecos, onEdit, onRemove }: props) {
   return (
     <View className="mt-8 mx-4">
-      {items.map((item) => (
-        <AddressItem key={item.key} item={item} />
+      {enderecos.map((endereco) => (
+        <AddressItem
+          key={endereco.id}
+          endereco={endereco}
+          onEdit={onEdit}
+          onRemove={onRemove}
+        />
       ))}
     </View>
   );
