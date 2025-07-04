@@ -47,5 +47,9 @@ public class UsuarioEntity {
     @Immutable
     private TermoConsentimentoIdentidadeEntity termoConsentimentoIdentidade;
 
+    private String sobre;
+
+    private String titulo;
+
 }
 

@@ -27,8 +27,8 @@ import java.lang.annotation.Target;
                         examples = @ExampleObject(value = """
                                 {
                                     "nome": "Izabela Soares",
-                                    "senha": "Senha@123"
-                                    "dataNascimento": "1990-01-01",
+                                    "titulo": "Exploradora"
+                                    "sobre": "Apaixonada por histórias e café Sempre achei que bons livros foram feitos pra rodar o mundo, não pra juntar poeira na estante. Vamos espalhar páginas e gentileza por aí?",
                                 }""")
                 )
         )

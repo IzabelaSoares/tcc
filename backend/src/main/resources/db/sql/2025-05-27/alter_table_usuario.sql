@@ -1,0 +1,3 @@
+ALTER TABLE usuario
+    ADD COLUMN titulo VARCHAR(255),
+ADD COLUMN sobre VARCHAR(500);

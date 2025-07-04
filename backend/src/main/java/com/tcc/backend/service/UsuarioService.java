@@ -6,9 +6,7 @@ import com.tcc.backend.exception.EmailJaCadastradoException;
 import com.tcc.backend.exception.TermoNaoAceitoException;
 import com.tcc.backend.exception.UsuarioNaoEncontradoException;
 import com.tcc.backend.repository.UsuarioRepository;
-import com.tcc.backend.web.usuario.UsuarioCreateRequest;
-import com.tcc.backend.web.usuario.UsuarioResponse;
-import com.tcc.backend.web.usuario.UsuarioUpdateRequest;
+import com.tcc.backend.web.usuario.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,6 +38,11 @@ public class UsuarioService {
                 .orElseThrow(() -> new UsuarioNaoEncontradoException(email));
     }
 
+    private UsuarioEntity buscarUsuarioPorId(UUID id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new UsuarioNaoEncontradoException(id));
+    }
+
     public UsuarioResponse cadastrar(UsuarioCreateRequest request, HttpServletRequest httpRequest) {
         validarCadastro(request);
         String senha = passwordEncoder.encode(request.senha());
@@ -50,13 +53,20 @@ public class UsuarioService {
         return UsuarioResponse.of(usuario);
     }
 
-    public UsuarioResponse atualizar(UsuarioUpdateRequest request) {
+    public UsuarioUpdateResponse atualizarDados(UsuarioUpdateRequest request) {
         UsuarioEntity usuarioLogado = buscarUsuarioLogado();
-        String senha = passwordEncoder.encode(request.senha());
-        UsuarioEntity usuario = UsuarioUpdateRequest.of(request, senha, usuarioLogado);
-        usuario = repository.save(usuario);
+        UUID idUsuario = usuarioLogado.getId();
+        repository.update(idUsuario, request.nome(), request.titulo(), request.sobre());
+        UsuarioEntity usuarioAtualizado = buscarUsuarioPorId(idUsuario);
 
-        return UsuarioResponse.of(usuario);
+        return UsuarioUpdateResponse.of(usuarioAtualizado);
+    }
+
+    public void atualizarSenha(UsuarioUpdatePasswordRequest request) {
+        UsuarioEntity usuarioLogado = buscarUsuarioLogado();
+        UUID idUsuario = usuarioLogado.getId();
+        String senha = passwordEncoder.encode(request.senha());
+        repository.updatePassword(idUsuario, senha);
     }
 
     private void validarCadastro(UsuarioCreateRequest request) {
