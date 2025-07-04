@@ -1,8 +1,10 @@
 import { UsuarioCreateRequestDTO } from "../../dtos/usuario/UsuarioCreateRequest";
+import { UsuarioProfileResponseDTO } from "../../dtos/usuario/UsuarioProfileResponse";
 import { UsuarioUpdatePasswordRequestDTO } from "../../dtos/usuario/UsuarioUpdatePasswordRequest";
 import { UsuarioUpdateRequestDTO } from "../../dtos/usuario/UsuarioUpdateRequest";
 import {
   createUser,
+  searchProfileUser,
   updatePasswordUser,
   updateUser,
 } from "../data/usuario/usuarioApi";
@@ -44,9 +46,22 @@ export default function useUsuario() {
       });
   };
 
+  const buscarUsuario = async (): Promise<UsuarioProfileResponseDTO> => {
+    return await searchProfileUser()
+      .then((response) => {
+        console.log("Perfil do usuário buscado com sucesso:", response);
+        return response;
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar perfil do usuário:", error);
+        throw error;
+      });
+  }
+
   return {
     cadastrar,
     atualizar,
     atualizarSenha,
+    buscarUsuario,
   };
 }

@@ -52,4 +52,11 @@ public class UsuarioController {
         usuarioService.atualizarSenha(request);
         return ResponseEntity.noContent().build();
     }
+
+    @UsuarioUpdateDocumentation
+    @GetMapping
+    public ResponseEntity<UsuarioPerfilResponse> buscarPerfil(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(usuarioService.buscarUsuarioPerfil());
+    }
 }

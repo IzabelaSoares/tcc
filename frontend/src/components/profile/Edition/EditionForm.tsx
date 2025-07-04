@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { editFormFields } from "./formFields";
 import { FormValues } from "../../../types/FormFieldType";
@@ -7,15 +7,19 @@ import EditOptionsButton from "./EditOptionsButton";
 import EditConfirmCancelButton from "./EditConfirmCancelButton";
 import useUsuario from "../../../hooks/useUsuario";
 import { UsuarioUpdateRequestDTO } from "../../../../dtos/usuario/UsuarioUpdateRequest";
-import useProfile from "../../../screens/authenticated/Profile/useProfile";
+import { UsuarioProfileResponseDTO } from "../../../../dtos/usuario/UsuarioProfileResponse";
 
 type EditFormValues = FormValues<typeof editFormFields>;
 
 interface props {
   onChangeEditing: (isEditing: boolean) => void;
+  profile: UsuarioProfileResponseDTO;
 }
 
-export default function ProfileEditionForm({ onChangeEditing }: props) {
+export default function ProfileEditionForm({
+  onChangeEditing,
+  profile,
+}: props) {
   const { atualizar } = useUsuario();
   const [formValues, setFormValues] = useState<EditFormValues>(
     editFormFields.reduce(
@@ -24,12 +28,22 @@ export default function ProfileEditionForm({ onChangeEditing }: props) {
     )
   );
 
+  useEffect(() => {
+    const valoresAtualizados: EditFormValues = {
+      nome: profile.nome ?? "",
+      titulo: profile.titulo ?? "",
+      sobre: profile.sobre ?? "",
+    };
+
+    setFormValues(valoresAtualizados);
+  }, []);
+
   const onPressConfirm = () => {
     let atualizacao: UsuarioUpdateRequestDTO = {
       nome: formValues.nome,
       titulo: formValues.titulo,
-      sobre: formValues.sobre
-    }
+      sobre: formValues.sobre,
+    };
     atualizar(atualizacao);
   };
 

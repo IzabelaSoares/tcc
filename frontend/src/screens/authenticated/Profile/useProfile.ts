@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { DropdownItemType } from "../../../types/DropdownItemType";
 import { useAuth } from "../../../context/AuthContext";
 

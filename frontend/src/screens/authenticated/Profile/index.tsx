@@ -6,22 +6,43 @@ import {
   ProfileEdition,
 } from "../../../components/profile";
 import useProfile from "./useProfile";
+import useUsuario from "../../../hooks/useUsuario";
+import { UsuarioProfileResponseDTO } from "../../../../dtos/usuario/UsuarioProfileResponse";
+import { useEffect, useState } from "react";
 
 export default function Profile() {
+  const { buscarUsuario } = useUsuario();
+  const [profile, setProfile] = useState<UsuarioProfileResponseDTO>();
   const { items, isEditing, setIsEditing } = useProfile();
 
-  const ProfileContent = () =>
+  useEffect(() => {
+    async function carregarDadosUsuario() {
+      const usuario: UsuarioProfileResponseDTO = await buscarUsuario();
+      setProfile(usuario);
+    }
+
+    carregarDadosUsuario();
+  }, []);
+
+  const ProfileContent = (profile: UsuarioProfileResponseDTO) =>
     isEditing ? (
-      <ProfileEdition onChangeEditing={() => setIsEditing(false)} />
+      <ProfileEdition
+        onChangeEditing={() => setIsEditing(false)}
+        profile={profile}
+      />
     ) : (
-      <ProfileApresentation />
+      <ProfileApresentation profile={profile}/>
     );
 
   return (
     <View className="flex-1 bg-primary pt-20">
-      <ProfileDropdown items={items} />
-      <ProfileAvatar userName="Izabela Soares" />
-      <ProfileContent />
+      {profile && (
+        <>
+          <ProfileDropdown items={items} />
+          <ProfileAvatar userName={profile.nome} />
+          <ProfileContent {...profile} />
+        </>
+      )}
     </View>
   );
 }

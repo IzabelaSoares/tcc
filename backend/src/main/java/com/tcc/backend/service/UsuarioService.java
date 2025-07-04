@@ -79,5 +79,9 @@ public class UsuarioService {
         }
     }
 
+    public UsuarioPerfilResponse buscarUsuarioPerfil(){
+        UsuarioEntity usuario = buscarUsuarioLogado();
+        return UsuarioPerfilResponse.of(usuario);
+    }
 }
 

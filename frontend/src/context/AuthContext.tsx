@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect, use } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+  use,
+} from "react";
 import { AuthContextType } from "../types/AuthContextType";
 import { getToken, removeToken, saveToken } from "../data/auth/authStorage";
 import { login } from "../data/auth/authApi";
@@ -17,23 +24,28 @@ export const AuthProvider = ({ children }: props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    getToken().then((token) => {
-      setToken(token);
-      setIsLoggedIn(true);
+    getToken()
+    .then((token) => {
+      definirLogin(token as string)
     });
   }, []);
 
   const loginUser = async (credentials: AuthRequestDTO) => {
     await login(credentials)
-    .then((response) => {
-      setToken(response.token);
-      setUser({ email: response.email, nome: response.nome });
-      setIsLoggedIn(true);    
-    })
-    .catch((error) => {
-      console.error("Erro ao fazer login:", error) ;
-      throw error;
-    });
+      .then((response) => {
+        setUser({ email: response.email, nome: response.nome });
+        definirLogin(response.token)
+      })
+      .catch((error) => {
+        console.error("Erro ao fazer login:", error);
+        throw error;
+      });
+  };
+
+  const definirLogin = (token: string) => {
+    saveToken(token);
+    setToken(token);
+    setIsLoggedIn(true);
   };
 
   const logout = async () => {
